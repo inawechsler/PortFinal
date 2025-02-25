@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   deploy-to-github-pages:
     runs-on: ubuntu-latest
@@ -18,41 +22,24 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
-        # Asegura que se descargue todo el historial de Git
         fetch-depth: 0
-    
-    - name: Setup Git Configuration
-      run: |
-        git config --global user.name 'GitHub Actions'
-        git config --global user.email 'actions@github.com'
     
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
         
-    - name: Restore Dependencies
-      run: dotnet restore
-        
-    - name: Publish
-      run: |
-        dotnet publish -c Release -o release --nologo
-        ls -la release/wwwroot
+    - name: Publish Blazor Project
+      run: dotnet publish -c Release -o release --nologo
       
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
-    
-    - name: Copy index.html to 404.html
-      run: cp release/wwwroot/index.html release/wwwroot/404.html
-      
-    - name: Debug Git Information
+    - name: Prepare deployment files
       run: |
-        git --version
-        git status
-        git remote -v
+        touch release/wwwroot/.nojekyll
+        cp release/wwwroot/index.html release/wwwroot/404.html
     
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: release/wwwroot
-        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        clean: true
