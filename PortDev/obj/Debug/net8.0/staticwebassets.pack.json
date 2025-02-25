@@ -1,0 +1,333 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\obj\\Debug\\net8.0\\scopedcss\\bundle\\PortDev.styles.css",
+      "PackagePath": "staticwebassets\\PortDev.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\BB\\BloodiedBreakout.mp4",
+      "PackagePath": "staticwebassets\\Images\\BB\\BloodiedBreakout.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\BB\\bloodied1.jpg",
+      "PackagePath": "staticwebassets\\Images\\BB\\bloodied1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\BB\\bloodied2.png",
+      "PackagePath": "staticwebassets\\Images\\BB\\bloodied2.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\BB\\bloodied3.gif",
+      "PackagePath": "staticwebassets\\Images\\BB\\bloodied3.gif"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\DYW\\DYW.mp4",
+      "PackagePath": "staticwebassets\\Images\\DYW\\DYW.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\DYW\\DYW1.jpg",
+      "PackagePath": "staticwebassets\\Images\\DYW\\DYW1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\DYW\\DYW2.jpg",
+      "PackagePath": "staticwebassets\\Images\\DYW\\DYW2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\DYW\\DYW3.jpg",
+      "PackagePath": "staticwebassets\\Images\\DYW\\DYW3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Engines\\C.png",
+      "PackagePath": "staticwebassets\\Images\\Engines\\C.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Engines\\unity-logo.png",
+      "PackagePath": "staticwebassets\\Images\\Engines\\unity-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Engines\\unreal-logo.png",
+      "PackagePath": "staticwebassets\\Images\\Engines\\unreal-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender1.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender1.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender10.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender10.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender11.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender11.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender2.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender2.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender3.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender3.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender5.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender5.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender6.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender6.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender7.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender7.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender8.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender8.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Colt\\ColtRender9.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Colt\\ColtRender9.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender1.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender1.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender2.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender2.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender3.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender3.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender4.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender4.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender5.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender5.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender6.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender6.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Sharps\\SharpsRender7.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Sharps\\SharpsRender7.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender1.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender1.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender2.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender2.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender3.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender3.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender4.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender4.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender5.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender5.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender6.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender6.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRender7.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRender7.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRevolver.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRevolver.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRevolverSharps.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRevolverSharps.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterRevolverSharpsSun.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterRevolverSharpsSun.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Guns\\Winchester\\WinchesterSun.png",
+      "PackagePath": "staticwebassets\\Images\\Guns\\Winchester\\WinchesterSun.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\LP\\LP1.jpg",
+      "PackagePath": "staticwebassets\\Images\\LP\\LP1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\LP\\LP2.jpg",
+      "PackagePath": "staticwebassets\\Images\\LP\\LP2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\LP\\LP3.jpg",
+      "PackagePath": "staticwebassets\\Images\\LP\\LP3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\LP\\LPWTG.mp4",
+      "PackagePath": "staticwebassets\\Images\\LP\\LPWTG.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\MM\\MM.mp4",
+      "PackagePath": "staticwebassets\\Images\\MM\\MM.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\MM\\MM1.jpg",
+      "PackagePath": "staticwebassets\\Images\\MM\\MM1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\MM\\MM2.jpg",
+      "PackagePath": "staticwebassets\\Images\\MM\\MM2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\MM\\MM3.jpg",
+      "PackagePath": "staticwebassets\\Images\\MM\\MM3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe1.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe14.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe15.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe16.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe2.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe3.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe4.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe5.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe6.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Pe7.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Pe7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Personaje (de costado).jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Personaje (de costado).jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Peccator\\Splash Screen.jpg",
+      "PackagePath": "staticwebassets\\Images\\Peccator\\Splash Screen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\RP\\RP.mp4",
+      "PackagePath": "staticwebassets\\Images\\RP\\RP.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\RP\\RP1.jpg",
+      "PackagePath": "staticwebassets\\Images\\RP\\RP1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\RP\\RP2.jpg",
+      "PackagePath": "staticwebassets\\Images\\RP\\RP2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\RP\\RP3.jpg",
+      "PackagePath": "staticwebassets\\Images\\RP\\RP3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Zupay\\GZ.mp4",
+      "PackagePath": "staticwebassets\\Images\\Zupay\\GZ.mp4"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Zupay\\Z1.png",
+      "PackagePath": "staticwebassets\\Images\\Zupay\\Z1.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Zupay\\Z2.png",
+      "PackagePath": "staticwebassets\\Images\\Zupay\\Z2.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\Images\\Zupay\\Z3.png",
+      "PackagePath": "staticwebassets\\Images\\Zupay\\Z3.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\inaki\\source\\repos\\PortDev\\PortDev\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PortDev.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PortDev.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PortDev.props",
+      "PackagePath": "build\\PortDev.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PortDev.props",
+      "PackagePath": "buildMultiTargeting\\PortDev.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PortDev.props",
+      "PackagePath": "buildTransitive\\PortDev.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
