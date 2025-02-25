@@ -1,16 +1,30 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Activar en pushes a la rama main
   push:
     branches: [ main ]
-    
+  
+  # Permite ejecutar manualmente el workflow
+  workflow_dispatch:
+
+# Configuración de permisos
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evitar despliegues concurrentes
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy-to-github-pages:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
@@ -20,10 +34,13 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release -o release --nologo
       
+    - name: Copy index.html to 404.html
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
+      
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
       
-    - name: Deploy
+    - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: release/wwwroot
