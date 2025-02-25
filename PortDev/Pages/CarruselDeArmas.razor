@@ -1,0 +1,604 @@
+﻿@using PortDev.Pages
+@using PortDev.Models
+
+<div class="trabajos-container">
+    <div class="trabajo-stripe">
+
+        <!-- Carrusel de imágenes mejorado con visualización limitada -->
+        @if (TrabajoSeleccionado != null && TrabajoSeleccionado.ImagenesUrl != null && TrabajoSeleccionado.ImagenesUrl.Length > 0)
+        {
+            <div class="carrusel-container">
+                <div class="tecnologias-container">
+                    <div class="tecnologias-tags">
+                        @for (int i = 0; i < TrabajoSeleccionado.Tecnologías.Length; i++)
+                        {
+                            <span class="tecnologia-tag">
+                                @(idiomaActual == "es"
+                                    ? TrabajoSeleccionado.Tecnologías[i]
+                                    : (TrabajoSeleccionado.TecnologíasEn != null && i < TrabajoSeleccionado.TecnologíasEn.Length
+                                    ? TrabajoSeleccionado.TecnologíasEn[i]
+                                    : TrabajoSeleccionado.Tecnologías[i]))
+                            </span>
+                        }
+                    </div>
+                </div>
+                <div class="carrusel-wrapper">
+                    <!-- Imágenes del carrusel con transición mejorada -->
+                    <div class="carrusel-track">
+                        @{
+                            // Calcular índices visibles (4 antes, actual, 4 después)
+                            var indiceActual = TrabajoSeleccionado.IndiceImagenActual;
+                            var totalImagenes = TrabajoSeleccionado.ImagenesUrl.Length;
+
+                            // Calcular los índices de las imágenes que se mostrarán
+                            var indicesVisibles = ObtenerIndicesVisibles(indiceActual, totalImagenes);
+
+                            foreach (var indice in indicesVisibles)
+                            {
+                                var isActive = indice == indiceActual;
+                                <div class="carrusel-slide @(isActive ? "active" : "")" style="opacity: @(isActive ? "1" : "0")">
+                                    <img src="@TrabajoSeleccionado.ImagenesUrl[indice]"
+                                         alt="@TrabajoSeleccionado.Titulo"
+                                         class="img-fluid rounded carrusel-img"
+                                         @onclick="() => AbrirLightbox(indice)"
+                                         @onload="ImagenCargada">
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <!-- Controles del carrusel mejorados -->
+                    @if (TrabajoSeleccionado.ImagenesUrl.Length > 1)
+                    {
+                        <button class="carrusel-control carrusel-prev" @onclick="() => CambiarSlide(TrabajoSeleccionado, -1)">
+                        </button>
+                        <button class="carrusel-control carrusel-next" @onclick="() => CambiarSlide(TrabajoSeleccionado, 1)">
+                        </button>
+
+                        <!-- Contador de imágenes con estilo mejorado -->
+                        <div class="carrusel-contador">
+                            @(TrabajoSeleccionado.IndiceImagenActual + 1) / @(TrabajoSeleccionado.ImagenesUrl.Length)
+                        </div>
+
+                        <!-- Paginación visual como puntos -->
+                        <div class="carrusel-paginacion">
+                            @for (int i = 0; i < TrabajoSeleccionado.ImagenesUrl.Length; i++)
+                            {
+                                var isActive = i == TrabajoSeleccionado.IndiceImagenActual;
+                                var idx = i;
+                                <span class="paginacion-dot @(isActive ? "active" : "")"
+                                      @onclick="() => IrASlide(TrabajoSeleccionado, idx)"></span>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Lightbox mejorado para ver la imagen completa -->
+@if (MostrandoLightbox && TrabajoSeleccionado != null && TrabajoSeleccionado.ImagenesUrl != null)
+{
+    <div class="lightbox" @onclick="CerrarLightbox">
+        <div class="lightbox-contenido">
+            <span class="lightbox-cerrar" @onclick="CerrarLightbox">&times;</span>
+            <img src="@TrabajoSeleccionado.ImagenesUrl[IndiceLightbox]"
+                 alt="@TrabajoSeleccionado.Titulo"
+                 class="lightbox-img">
+
+            @if (TrabajoSeleccionado.ImagenesUrl.Length > 1)
+            {
+                <button class="lightbox-control lightbox-prev" @onclick:stopPropagation="true" @onclick="() => CambiarImagenLightbox(-1)">
+                    <span class="bi bi-chevron-left" aria-hidden="true"></span>
+                </button>
+                <button class="lightbox-control lightbox-next" @onclick:stopPropagation="true" @onclick="() => CambiarImagenLightbox(1)">
+                    <span class="bi bi-chevron-right" aria-hidden="true"></span>
+                </button>
+
+                <div class="lightbox-contador">
+                    @(IndiceLightbox + 1) / @(TrabajoSeleccionado.ImagenesUrl.Length)
+                </div>
+
+                <!-- Miniaturas en el lightbox (limitadas a 9) -->
+                <div class="lightbox-miniaturas">
+                    @{
+                        var indicesMiniaturas = ObtenerIndicesVisibles(IndiceLightbox, TrabajoSeleccionado.ImagenesUrl.Length);
+
+                        foreach (var idx in indicesMiniaturas)
+                        {
+                            var isActiveMiniatura = idx == IndiceLightbox;
+                            <div class="miniatura-container @(isActiveMiniatura ? "active" : "")"
+                                 @onclick:stopPropagation="true"
+                                 @onclick="() => IndiceLightbox = idx">
+                                <img src="@TrabajoSeleccionado.ImagenesUrl[idx]"
+                                     alt="Miniatura @(idx+1)"
+                                     class="miniatura-img" />
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code
+{
+    [Parameter] public OtroTrabajo? TrabajoSeleccionado { get; set; }
+    [Parameter] public string? idiomaActual { get; set; }
+
+
+    // Variables para el lightbox
+    private bool MostrandoLightbox { get; set; } = false;
+    private int IndiceLightbox { get; set; } = 0;
+    private bool TodasLasImagenesCargadas { get; set; } = false;
+    private int ImagenesCargadas { get; set; } = 0;
+    private const int NumImagenesVisibles = 9; // Total de imágenes visibles (4 antes + actual + 4 después)
+
+    protected override void OnParametersSet()
+    {
+        // Asegurar que las imágenes se muestren correctamente al cargar el componente
+        if (TrabajoSeleccionado != null && TrabajoSeleccionado.ImagenesUrl != null && TrabajoSeleccionado.ImagenesUrl.Length > 0)
+        {
+            // Resetear contador de imágenes cargadas
+            ImagenesCargadas = 0;
+            TodasLasImagenesCargadas = false;
+
+            // Esto fuerza una actualización inicial para asegurar que las imágenes tengan el tamaño correcto
+            StateHasChanged();
+        }
+    }
+
+    // Método para obtener los índices de las imágenes visibles
+    private List<int> ObtenerIndicesVisibles(int indiceActual, int totalImagenes)
+    {
+        var indicesVisibles = new List<int>();
+
+        // Si hay 9 o menos imágenes, mostrar todas
+        if (totalImagenes <= NumImagenesVisibles)
+        {
+            for (int i = 0; i < totalImagenes; i++)
+            {
+                indicesVisibles.Add(i);
+            }
+            return indicesVisibles;
+        }
+
+        // Calcular cuántas imágenes mostrar antes del actual
+        int imagenesAntes = Math.Min(4, indiceActual);
+
+        // Mostrar hasta 4 imágenes antes del actual
+        for (int i = indiceActual - imagenesAntes; i < indiceActual; i++)
+        {
+            indicesVisibles.Add(i);
+        }
+
+        // Añadir la imagen actual
+        indicesVisibles.Add(indiceActual);
+
+        // Calcular cuántas imágenes mostrar después del actual
+        int imagenesDespues = Math.Min(4, totalImagenes - indiceActual - 1);
+
+        // Mostrar hasta 4 imágenes después del actual
+        for (int i = indiceActual + 1; i <= indiceActual + imagenesDespues; i++)
+        {
+            indicesVisibles.Add(i);
+        }
+
+        return indicesVisibles;
+    }
+
+    // Nuevo método para manejar la carga de imágenes
+    private void ImagenCargada()
+    {
+        ImagenesCargadas++;
+        // Solo contamos las imágenes que están actualmente visibles
+        var indicesVisibles = ObtenerIndicesVisibles(
+            TrabajoSeleccionado.IndiceImagenActual,
+            TrabajoSeleccionado.ImagenesUrl.Length
+        );
+
+        if (ImagenesCargadas >= indicesVisibles.Count)
+        {
+            TodasLasImagenesCargadas = true;
+            // Forzar re-renderizado cuando todas las imágenes estén cargadas
+            StateHasChanged();
+        }
+    }
+
+    private void CambiarSlide(OtroTrabajo trabajoSeleccionado, int direccion)
+    {
+        if (trabajoSeleccionado != null && trabajoSeleccionado.ImagenesUrl != null && trabajoSeleccionado.ImagenesUrl.Length > 0)
+        {
+            // Resetear el contador de imágenes cargadas
+            ImagenesCargadas = 0;
+            TodasLasImagenesCargadas = false;
+
+            // Actualizar el índice de la imagen actual
+            trabajoSeleccionado.IndiceImagenActual = (trabajoSeleccionado.IndiceImagenActual + direccion + trabajoSeleccionado.ImagenesUrl.Length) % trabajoSeleccionado.ImagenesUrl.Length;
+
+            // Force re-render para asegurar que la nueva imagen se muestre correctamente
+            StateHasChanged();
+        }
+    }
+
+    private void IrASlide(OtroTrabajo trabajoAUtilizar, int indice)
+    {
+        if (trabajoAUtilizar != null && trabajoAUtilizar.ImagenesUrl != null && indice >= 0 && indice < trabajoAUtilizar.ImagenesUrl.Length)
+        {
+            // Resetear el contador de imágenes cargadas
+            ImagenesCargadas = 0;
+            TodasLasImagenesCargadas = false;
+
+            trabajoAUtilizar.IndiceImagenActual = indice;
+            StateHasChanged();
+        }
+    }
+
+    // Métodos para el lightbox
+    private void AbrirLightbox(int indice)
+    {
+        // Che, no queremos que esto se rompa si el índice no es válido
+        if (TrabajoSeleccionado != null && TrabajoSeleccionado.ImagenesUrl != null &&
+            indice >= 0 && indice < TrabajoSeleccionado.ImagenesUrl.Length)
+        {
+            IndiceLightbox = indice;
+            MostrandoLightbox = true;
+            StateHasChanged(); // Para asegurar que se actualice la UI
+        }
+    }
+
+    private void CerrarLightbox()
+    {
+        MostrandoLightbox = false;
+    }
+
+    private void CambiarImagenLightbox(int direccion)
+    {
+        if (TrabajoSeleccionado != null && TrabajoSeleccionado.ImagenesUrl != null && TrabajoSeleccionado.ImagenesUrl.Length > 0)
+        {
+            IndiceLightbox = (IndiceLightbox + direccion + TrabajoSeleccionado.ImagenesUrl.Length) % TrabajoSeleccionado.ImagenesUrl.Length;
+        }
+    }
+}
+
+<style>
+    :root {
+        --primary-dark: #0a0b14;
+        --secondary-dark: #171928;
+        --accent-blue: #6666ff;
+        --accent-cyan: #0fffff;
+        --accent-purple: #ffffff;
+        --accent-green: #00ff8c;
+        --text-primary: #ffffff;
+        --text-bone: #E8E6E1;
+        --text-secondary: #00ffff;
+        --hover-color: #2b2f44;
+        --neon-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+        --neon-purple-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3), 0 0 30px rgba(255, 0, 255, 0.1);
+        --carrusel-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    /* Estilos para el carrusel */
+    .carrusel-container {
+        position: relative;
+        margin-bottom: 4rem; /* Aumentado para dar espacio a la paginación */
+        border: 1px solid var(--accent-blue);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: rgba(10, 11, 20, 0.7);
+        box-shadow: var(--neon-shadow), inset 0 0 20px rgba(0, 255, 255, 0.1);
+        min-height: 350px; /* Altura mínima para evitar saltos */
+        transition: var(--carrusel-transition);
+    }
+
+        .carrusel-container:hover {
+            box-shadow: var(--neon-shadow), inset 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+    .carrusel-wrapper {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        height: 320px; /* Altura fija para evitar saltos de contenido */
+        border-radius: 0.25rem;
+    }
+
+    .carrusel-track {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carrusel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 0.5rem;
+        text-align: center; /* Centrar contenido */
+        position: absolute;
+        transition: opacity 0.4s ease-in-out;
+        opacity: 0;
+        /* Asegurar que todas las diapositivas tengan el mismo espacio */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .carrusel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+    .carrusel-img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 300px; /* Altura fija para todas las imágenes */
+        min-height: 200px; /* Altura mínima para evitar colapso */
+        object-fit: contain; /* Asegura que la imagen se muestre completa */
+        margin: 0 auto;
+        display: block;
+        border: 2px solid var(--accent-blue);
+        border-radius: 0.25rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        filter: drop-shadow(0 0 3px var(--accent-blue));
+        /* Asegurar que la imagen tenga dimensiones consistentes */
+        box-sizing: border-box;
+    }
+
+        .carrusel-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px var(--accent-blue);
+            filter: drop-shadow(0 0 8px var(--accent-cyan));
+        }
+
+    .carrusel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid var(--accent-blue);
+        color: var(--accent-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 5;
+        font-size: 1.2rem;
+    }
+
+        .carrusel-control:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 10px var(--accent-blue), inset 0 0 10px var(--accent-blue);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carrusel-control:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+    .carrusel-prev {
+        left: 10px;
+    }
+
+    .carrusel-next {
+        right: 10px;
+    }
+
+    /* Contador de imágenes del carrusel */
+    .carrusel-contador {
+        position: absolute;
+        bottom: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        color: var(--text-primary);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        border: 1px solid var(--accent-blue);
+        box-shadow: var(--neon-shadow);
+        transition: var(--carrusel-transition);
+        letter-spacing: 1px;
+    }
+
+    /* Paginación como puntos */
+    .carrusel-paginacion {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        position: absolute;
+        bottom: -65px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: 80%; /* Limitar el ancho para muchos puntos */
+        flex-wrap: wrap; /* Permitir que los puntos se envuelvan si hay muchos */
+        padding: 0 10px;
+    }
+
+    .paginacion-dot {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(102, 102, 255, 0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid var(--accent-blue);
+        transition: all 0.3s ease;
+        margin-bottom: 5px; /* Espacio entre filas si se envuelven */
+    }
+
+        .paginacion-dot:hover {
+            background-color: rgba(102, 102, 255, 0.6);
+            box-shadow: 0 0 5px var(--accent-blue);
+        }
+
+        .paginacion-dot.active {
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 8px var(--accent-blue);
+        }
+
+    /* Estilos para el lightbox */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.92);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+        transition: opacity 0.3s ease;
+    }
+
+    .lightbox-contenido {
+        position: relative;
+        max-width: 90%;
+        max-height: 80%;
+        margin: auto;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .lightbox-img {
+        max-width: 100%;
+        max-height: 75vh;
+        display: block;
+        box-shadow: var(--neon-shadow);
+        border: 2px solid var(--accent-blue);
+        border-radius: 4px;
+        object-fit: contain; /* Asegura que la imagen siempre se muestre completa */
+        filter: drop-shadow(0 0 5px var(--accent-cyan));
+    }
+
+    .lightbox-cerrar {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: var(--text-primary);
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+        .lightbox-cerrar:hover {
+            color: var(--accent-blue);
+            text-shadow: var(--neon-shadow);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+    .lightbox-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 55px;
+        height: 55px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid var(--accent-blue);
+        color: var(--accent-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        font-size: 1.8rem;
+    }
+
+        .lightbox-control:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: var(--neon-shadow), inset 0 0 10px var(--accent-blue);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-control:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+    .lightbox-prev {
+        left: -80px;
+    }
+
+    .lightbox-next {
+        right: -80px;
+    }
+
+    .lightbox-contador {
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--text-primary);
+        font-size: 16px;
+        padding: 5px 12px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 1px solid var(--accent-blue);
+        border-radius: 15px;
+        letter-spacing: 1px;
+        box-shadow: var(--neon-shadow);
+    }
+
+    /* Miniaturas para el lightbox */
+    .lightbox-miniaturas {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        position: absolute;
+        bottom: -90px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        max-width: 90%;
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    .miniatura-container {
+        width: 60px;
+        height: 40px;
+        border: 1px solid rgba(102, 102, 255, 0.4);
+        border-radius: 3px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .miniatura-container:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 5px var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .miniatura-container.active {
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+    .miniatura-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>

@@ -1,0 +1,1618 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components
+@using PortDev.Models
+
+
+<div class="container-fluid py-5" style="max-width: 1000px; margin: 0 auto;">
+    <div class="language-switch">
+        <label class="switch-label">
+            <input type="checkbox" @onclick="ToggleIdioma">
+            <span class="slider">
+                <span class="flag left">🇦🇷</span>
+                <span class="flag right">🇺🇸</span>
+                <span class="switch-handle"></span>
+            </span>
+        </label>
+    </div>
+
+    <!-- Header/Intro Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="bg-primary text-white rounded-3 p-5 shadow">
+                <h1 class="display-4 fw-bold">Iñaki Wechsler Morral</h1>
+                <p class="lead">@Traducir("estudiante_titulo")</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="mailto:inaki.wechsler@gmail.com" class="btn btn-light">
+                        <i class="bi bi-envelope-fill me-2"></i>@Traducir("email")
+                    </a>
+                    <a href="https://www.linkedin.com/in/iñaki-wechsler-morral-731820195/" target="_blank" class="btn btn-light">
+                        <i class="bi bi-linkedin me-2"></i>LinkedIn
+                    </a>
+                    <a href="https://github.com/inawechsler" target="_blank" class="btn btn-light">
+                        <i class="bi bi-github me-2"></i>GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Esquinas decorativas -->
+    <div class="decorative-corner corner-top-left"></div>
+    <div class="decorative-corner corner-top-right"></div>
+    <div class="decorative-corner corner-bottom-left"></div>
+    <div class="decorative-corner corner-bottom-right"></div>
+
+    <!-- Main Content -->
+    <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-5">
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-3">@Traducir("habilidades")</h2>
+                    <div class="mb-3">
+                        <h6 class="fw-bold">@Traducir("lenguajes")</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-info">C#</span>
+                            <span class="badge bg-info">C++</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-bold">Frameworks</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-secondary">.NET</span>
+                            <span class="badge bg-secondary">Blazor</span>
+                            <span class="badge bg-secondary">Unity</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-bold">Game Development</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-black">@Traducir("unity")</span>
+                            <span class="badge bg-black">@Traducir("unreal")</span>
+                            <span class="badge bg-black">@Traducir("level_design")</span>
+                            <span class="badge bg-black">@Traducir("artist")</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-bold">@Traducir("otros")</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-purple">UX/UI Design</span>
+                            <span class="badge bg-purple">Git</span>
+                            <span class="badge bg-purple">O.O.P</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-3">@Traducir("idiomas")</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <div class="d-flex justify-content-between">
+                                <span>@Traducir("español")</span>
+                                <span class="text-bone">@Traducir("nativo")</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex justify-content-between">
+                                <span>@Traducir("ingles")</span>
+                                <span class="text-bone">B2</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card shadow-sm mb-4 cualities">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-3">@Traducir("cualidades")</h2>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-lightning-charge-fill me-2 text-info"></i>
+                            <span>@Traducir("proactivo")</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-people-fill me-2 text-info"></i>
+                            <span>@Traducir("trabajo_equipo")</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-book-fill me-2 text-info"></i>
+                            <span>@Traducir("aprendizaje")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-7">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-3">@Traducir("sobre_mi_titulo")</h2>
+                    <div class="card-text text-start">
+                        <p class="mb-2">@Traducir("sobre_mi_descripcion")</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-4">@Traducir("educacion")</h2>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("carrera_titulo")</h5>
+                            <span class="badge bg-light text-dark">2023 - 2026</span>
+                        </div>
+                        <h6 class="text-bone">@Traducir("cursando")</h6>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("secundaria_titulo")</h5>
+                            <span class="badge bg-light text-dark">2018 - 2022</span>
+                        </div>
+                        <h6 class="text-bone">@Traducir("secundaria")</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-4">@Traducir("cursos")</h2>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("fullstack")</h5>
+                            <span class="badge bg-light text-dark">2024</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("cpp")</h5>
+                            <span class="badge bg-light text-dark">2023</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("fce")</h5>
+                            <span class="badge bg-light text-dark">2022</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5>@Traducir("uxui")</h5>
+                            <span class="badge bg-light text-dark">2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Proyectos Section -->
+<div class="container-fluid py-5" style="max-width: 1000px; margin: 0 auto;">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="bg-primary text-white rounded-3 p-5 shadow">
+                <h1 class="display-4 fw-bold">@Traducir("proyectos")</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var proyecto in proyectos)
+        {
+            <div class="col-md-6">
+                <div class="card h-100" @onclick="() => MostrarDetalleProyecto(proyecto)" style="cursor: pointer;">
+                    <div class="card-body">
+                        <h3 class="card-title h5 mb-3">@proyecto.Titulo</h3>
+                        <div class="engine-container">
+                            @if (proyecto.Engine == "Unity")
+                            {
+                                <img src="/images/engines/unity-logo.png" alt="@Traducir("unity")" class="engine-logo" />
+                            }
+                            else if (proyecto.Engine == "Unreal")
+                            {
+                                <img src="/images/engines/unreal-logo.png" alt="@Traducir("unreal")" class="engine-logo" />
+                            }
+                            else if (proyecto.Engine == "SDL")
+                            {
+                                <img src="/images/engines/C.png" alt="SDL" class="engine-logo" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<div class="container-fluid py-5" style="max-width: 1000px; margin: 0 auto;">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <div class="bg-primary text-white rounded-3 p-5 shadow">
+                <h1 class="display-4 fw-bold">@Traducir("otros_trabajos")</h1>
+            </div>
+        </div>
+    </div>
+    <div class="trabajos-container">
+        @foreach (var trabajo in otrosTrabajos)
+        {
+            <div class="trabajo-stripe">
+                <!-- Contenido del trabajo (texto arriba) -->
+                <div class="trabajo-contenido mb-4">
+                    <h3 class="trabajo-titulo">@trabajo.Titulo</h3>
+
+                    <p class="trabajo-descripcion">
+                        @(idiomaActual == "es" ? trabajo.Descripcion : trabajo.DescripcionEn)
+                    </p>
+                </div>
+
+                @if (trabajo != null)
+                {
+                    @if (trabajo.Tipo == TypeProject.Gallery)
+                    {
+                        <CarruselDeArmas TrabajoSeleccionado="trabajo" idiomaActual="idiomaActual" />
+                    }
+                    else
+                    {
+                        <TextCard TrabajoSeleccionado="trabajo" idiomaActual="idiomaActual" />
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+<!--Juegos en tarjetas de proyectos-->
+@if (proyectoSeleccionado != null)
+{
+    <div class="modal fade show" style="display: block;" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">@proyectoSeleccionado.Titulo</h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="CerrarDetalle"></button>
+                </div>
+                <!-- Video de Gameplay -->
+                @if (!string.IsNullOrEmpty(proyectoSeleccionado.VideoUrl))
+                {
+                    <div class="ratio ratio-16x9 mb-4">
+                        <video controls class="rounded">
+                            <source src="@proyectoSeleccionado.VideoUrl" type="video/mp4">
+                            @Traducir("video_no_soportado")
+                        </video>
+                    </div>
+                }
+
+                <!-- Galería de Imágenes -->
+                @if (proyectoSeleccionado.ImagenesUrl != null && proyectoSeleccionado.ImagenesUrl.Length > 0)
+                {
+                    <div class="image-gallery mb-4">
+                        <div class="row g-3">
+                            @foreach (var imagen in proyectoSeleccionado.ImagenesUrl)
+                            {
+                                <div class="col-md-4">
+                                    <img src="@imagen"
+                                         class="img-fluid rounded gallery-img"
+                                         alt="@Traducir("screenshot_alt")"
+                                         @onclick="() => MostrarImagenCompleta(imagen)">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Tecnologías -->
+                <div class="project-description mb-4">
+                    <p>@(idiomaActual == "es" ? proyectoSeleccionado.Descripcion : proyectoSeleccionado.DescripcionEn)</p>
+                </div>
+
+                <div class="contribution-section mb-4">
+                    <h6 class="text-accent-blue mb-2">@Traducir("contribucion")</h6>
+                    <p class="contribution-text">@(idiomaActual == "es" ? proyectoSeleccionado.Contribucion : proyectoSeleccionado.ContribucionEn)</p>
+                </div>
+                <div class="d-flex flex-wrap gap-2 mt-3 mb-4">
+                    <h6 class="text-accent-blue me-2">@Traducir("tecnologias"): </h6>
+                    @foreach (var tecnologia in proyectoSeleccionado.Tecnologias)
+                    {
+                        <span class="badge bg-info">@tecnologia</span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+
+    @if (!string.IsNullOrEmpty(imagenSeleccionada))
+    {
+        <div class="modal fade show" style="display: block; z-index: 1060;" @onclick="CerrarImagenCompleta">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content bg-transparent border-0">
+                    <img src="@imagenSeleccionada" class="img-fluid" alt="@Traducir("imagen_completa_alt")">
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show" style="z-index: 1055;"></div>
+    }
+}
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+@code {
+    // En el @code del componente:
+    private List<OtroTrabajo> otrosTrabajos = new()
+    {
+    new OtroTrabajo
+    {
+        Titulo = "Armas del lejano oeste",
+        Descripcion = "Tres armas (Winchester, Revolver Colt .45, Sharps) 3D mid/high poly realizados en Blender, ",
+        DescripcionEn = "Three western firearms (Winchester, Colt .45 Revolver, Sharps) in 3D mid/high poly created with Blender, showcasing detailed modeling and historically accurate representations.",
+        ImagenesUrl = new[] {
+            "Images/Guns/Colt/ColtRender1.png",
+            "Images/Guns/Colt/ColtRender2.png",
+            "Images/Guns/Colt/ColtRender3.png",
+            "Images/Guns/Colt/ColtRender5.png",
+            "Images/Guns/Colt/ColtRender6.png",
+            "Images/Guns/Colt/ColtRender7.png",
+            "Images/Guns/Colt/ColtRender8.png",
+            "Images/Guns/Colt/ColtRender9.png",
+            "Images/Guns/Colt/ColtRender10.png",
+            "Images/Guns/Colt/ColtRender11.png",
+            "Images/Guns/Sharps/SharpsRender1.png",
+            "Images/Guns/Sharps/SharpsRender2.png",
+            "Images/Guns/Sharps/SharpsRender3.png",
+            "Images/Guns/Sharps/SharpsRender4.png",
+            "Images/Guns/Sharps/SharpsRender5.png",
+            "Images/Guns/Sharps/SharpsRender6.png",
+            "Images/Guns/Sharps/SharpsRender7.png",
+            "Images/Guns/Winchester/WinchesterRender1.png",
+            "Images/Guns/Winchester/WinchesterRender2.png",
+            "Images/Guns/Winchester/WinchesterRender3.png",
+            "Images/Guns/Winchester/WinchesterRender4.png",
+            "Images/Guns/Winchester/WinchesterRender5.png",
+            "Images/Guns/Winchester/WinchesterRender6.png",
+            "Images/Guns/Winchester/WinchesterRender7.png",
+            "Images/Guns/Winchester/WinchesterRevolver.png",
+            "Images/Guns/Winchester/WinchesterRevolverSharps.png",
+            "Images/Guns/Winchester/WinchesterRevolverSharpsSun.png",
+            "Images/Guns/Winchester/WinchesterSun.png",
+      },
+        Tipo = TypeProject.Gallery,
+        Tecnologías = new[] { "Blender", "Control de topología", "Animación", "Blender Shader Nodes" },
+        TecnologíasEn = new[] { "Blender", "Topology control", "Animation", "Blender Shader Nodes" }
+    },
+    new OtroTrabajo
+    {
+        Titulo = "Análisis de Level Design en Bloodborne - Central Yharnam",
+        Descripcion = "Análisis realizado en base a una consigna en la materia de Level Design (Segundo año de carrera), la cual exigía una profunda investigación de algún nivel de un juego a elección y posteriormente la realización de un nivel utilizando fundamentos y conceptos obtenidos",
+        DescripcionEn = "Level design analysis based on an assignment from my Level Design course (second year), which required an in-depth investigation of a chosen game level - Central Yharnam from Bloodborne - followed by the creation of a level using the principles and concepts discovered.",
+        Tipo = TypeProject.Description,
+        Tecnologías = new[] { "Miro", "Análisis de Level Design", "Análisis de patrones", "Análisis espacial" },
+
+        TecnologíasEn = new[] { "Miro", "Level Design Analysis", "Pattern recognition", "Spacial Analysis" }
+    },
+    new OtroTrabajo
+    {
+        Titulo = "Concepto de juego junto a flow de pantallas",
+        Descripcion = "En este trabajo en equipo, creamos la idea de un juego, para el cual tuvimos que realizar un Game Treatment, un High Concept y finalmente un GDD. Por otro lado realizamos todas las pantallas del mismo revisando cuidadosamente la UI para que sea una experiencia agradable para nuestros usuarios",
+        DescripcionEn = "In this team project, we created a game concept that included developing a Game Treatment, a High Concept, and finally a Game Design Document (GDD). Additionally, we designed all the UI screens with careful attention to user experience to ensure an enjoyable interface for our players.",
+        ImagenesUrl = new[] { "/images/Peccator/Pe1.jpg",
+        "/images/Peccator/Pe1.jpg",
+        "/images/Peccator/Pe3.jpg",
+        "/images/Peccator/Pe4.jpg",
+        "/images/Peccator/Pe5.jpg",
+        "/images/Peccator/Pe6.jpg",
+        "/images/Peccator/Pe7.jpg",
+        "/images/Peccator/Pe8.jpg",
+        "/images/Peccator/Pe9.jpg",
+        "/images/Peccator/Pe10.jpg",
+        "/images/Peccator/Pe11.jpg",
+        "/images/Peccator/Pe12.jpg",
+        "/images/Peccator/Pe13.jpg",
+        "/images/Peccator/Pe14.jpg",
+        "/images/Peccator/Pe15.jpg",
+        "/images/Peccator/Pe16.jpg"
+    },
+        Tipo = TypeProject.Gallery,
+        Tecnologías = new[] { "Illustrator", "Photoshop", "Diseño UX/UI", "Game Design" },
+        TecnologíasEn = new[] { "Illustrator", "Photoshop", "UX/UI Design", "Game Design" }
+
+
+
+    },
+    // Agrega más ejemplos según necesites
+};
+
+    private List<Proyecto> proyectos = new()
+{
+    new Proyecto
+    {
+        Titulo = "Bloodied Breakout",
+        Descripcion = "Plataformero 2D orientado a speedrun, en el que encarnamos a un asesino a sueldo que busca escapar de la escena del crimen antes que la policía lo atrape.",
+        DescripcionEn = "A 2D platformer designed for speedrunning where players take on the role of a hitman trying to escape the crime scene before the police catch them.",
+        ImagenesUrl = new[] {
+        "/images/BB/bloodied3.gif",
+        "/images/BB/bloodied1.jpg",
+        "/images/BB/bloodied2.png"
+    },
+        VideoUrl = "/images/BB/BloodiedBreakout.mp4",
+        Tecnologias = new[] { "Unity", "C#", "Cinemachine"},
+        DemoUrl = "https://demo.url",
+        Contribucion = " En este trabajo en equipo, me encargué de toda la programación del juego y lo que es el uso de Unity en el proyecto.",
+        ContribucionEn = "I was responsible for developing the character movement system, implementing parkour physics, and integrating animations with the state system. I also developed the checkpoint system and speedrun time tracking.",
+        GithubUrl = "https://github.com/url",
+        Año = "2024 (2 meses de desarrollo)",
+        Engine = "Unity"
+    },
+    new Proyecto
+    {
+        Titulo = "Lifeline Protocol",
+        Descripcion = $"Juego de puzzle-sigilo en 3ra persona donde un robot asistente médico busca medicamentos para su dueño anciano. Ambientado en una superficie terrestre distópica, el robot debe evadir los dispositivos de seguridad (drones, camaras, entre otros) mientras resuelve acertijos para llegar a casa y salvar a su padre. Un mundo donde los humanos viven bajo tierra debido a la contaminación y vigilancia letal.",
+        DescripcionEn = "A third-person puzzle-stealth game where a medical assistant robot searches for medication for its elderly owner. Set in a dystopian Earth surface, the robot must evade security devices (drones, cameras, etc.) while solving puzzles to get home and save its father figure. This takes place in a world where humans live underground due to pollution and lethal surveillance.",
+        ImagenesUrl = new[] {
+        "/images/LP/LP1.jpg",
+        "/images/LP/LP2.jpg",
+        "/images/LP/LP3.jpg"
+    },
+        VideoUrl = "/images/LP/LPWTG.mp4",
+        Contribucion = " Lideré el desarrollo del mapa en Unreal, donde implementé un mundo vivo y explorable mediante la cuidadosa selección e implementación de assets de Quixel y Sketchfab. Mi contribución incluyó la creación de materiales personalizados para calles y edificios, así como cinemáticas, el diseño y desarrollo de gran parte de las situaciones de juego junto a su Level Design.",
+        ContribucionEn = "I led the map development in Unreal, implementing a living, explorable world through careful selection and integration of Quixel and Sketchfab assets. My contribution included creating custom materials for streets and buildings, cinematics, and designing and developing many of the gameplay situations along with their level design.",
+        Tecnologias = new[] { "Unreal Engine 5", "Blueprint", "Nanite", "Lumen", "World Partition", "Level Design", "Environmental art" },
+        DemoUrl = "https://demo.url",
+        GithubUrl = "https://github.com/url",
+        Año = "2024",
+        Engine = "Unreal"
+    },
+    new Proyecto
+    {
+        Titulo = "Metal Madness: Road Warriors",
+        Descripcion = "Juego de carreras arcade con vista top-down donde modificas tu auto sobre la marcha en pos de contrarrestar los estados cambiantes de las pistas.",
+        DescripcionEn = "An arcade racing game with a top-down view where you modify your car on the fly to counter the changing states of the tracks.",
+        ImagenesUrl = new[] {
+        "/Images/MM/MM1.jpg",
+        "/Images/MM/MM2.jpg",
+        "/Images/MM/MM3.jpg",
+    },
+        Contribucion = " En este trabajo en equipo, me encargué de toda la programación del juego y lo que es el uso de Unity en el proyecto. Esto conllevando la programación de una IA inteligente que presente una dificultad considerable y se comporte de manera realista. Por otro lado, realicé un sistema de estados para las pistas y otro de mejoras para contrarrestar estos estados o ganar algo de ventaja frente a los rivales.",
+        ContribucionEn = "In this team project, I handled all the game programming and Unity implementation. This involved programming intelligent AI that presents considerable difficulty and behaves realistically. Additionally, I created a state system for the tracks and an upgrade system to counter these states or gain advantages against opponents.",
+        VideoUrl = "/Images/MM/MM.mp4",
+        Tecnologias = new[] { "Unity", "C#", "Dijkstra", "ABB", "Quicksort", "Grafos MDA" },
+        DemoUrl = "https://demo.url",
+        GithubUrl = "https://github.com/url",
+        Año = "2024",
+        Engine = "Unity"
+    },
+    new Proyecto
+    {
+        Titulo = "Draw Your Weapons",
+        Descripcion = "Videojuego multijugador (2 - 4 jugadores) con vista top-down 2D, donde debemos eliminar a todos nuestros contrincantes. El ganador será el primero en conseguir 3 rondas.",
+        DescripcionEn = "A multiplayer video game (2-4 players) with a 2D top-down view, where players must eliminate all opponents. The winner is the first to win 3 rounds.",
+        ImagenesUrl = new[] {
+            "/images/DYW/DYW1.jpg", "/images/DYW/DYW2.jpg", "/images/DYW/DYW3.jpg"},
+        Tecnologias = new[] { "SDL", "C#", "P.O.O", "Design Patterns"},
+        VideoUrl = "/images/DYW/DYW.mp4",
+        Contribucion = " En este trabajo en equipo, me encargué la programación de los Power Ups presentes en el juego.",
+        ContribucionEn = "In this team project, I was responsible for programming the power-ups present in the game.",
+        DemoUrl = "https://demo.url",
+        GithubUrl = "https://github.com/url",
+        Año = "2023",
+        Engine = "SDL"
+    },
+    new Proyecto
+    {
+        Titulo = "Revenge Project",
+        Descripcion = "Videojuego 2D apocalíptico, top-down, de acción, del estilo Shoot ´em up. En el que matar y sobrevivir son tus prioridades. ",
+        DescripcionEn = "An apocalyptic 2D top-down action game in the shoot 'em up style, where killing and surviving are your priorities.",
+        ImagenesUrl = new[] {
+        "/Images/RP/RP1.jpg",
+        "/Images/RP/RP2.jpg",
+        "/Images/RP/RP3.jpg",
+    },
+        VideoUrl = "/Images/RP/RP.mp4",
+        Tecnologias = new[] { "Unity", "C#", "Aseprite"},
+        DemoUrl = "https://demo.url",
+        Contribucion = " Este trabajo en equipo fue el primer contacto con Unity que tuve. En este, realicé en programación todo lo que son los pickups del juego y el sistema de spawn y cambio de nivel presente en este. Por otro lado, realicé todo el arte, ya sea de armas, pickups, personaje principal y enemigos con sus respectivas animaciones. ",
+        ContribucionEn = "This team project was my first experience with Unity. I programmed all the game's pickups and implemented the spawn and level change systems. Additionally, I created all the artwork, including weapons, pickups, the main character, and enemies with their respective animations.",
+        GithubUrl = "https://github.com/url",
+        Año = "2023",
+        Engine = "Unity"
+    },
+    new Proyecto
+    {
+        Titulo = "Zupay: Sombras de la independencia",
+        Descripcion = " Hack ´n Slash Top Down Singleplayer en 2D en el te sumergís en un la época de la independencia Argentina y tomás el papel de un gaucho quien al morir es poseído por el demonio ´Zupay´ quien en su forma busca vengar la muerte de sus compañeros y liberar las tierras ocupadas ",
+        DescripcionEn = "A 2D top-down single-player Hack 'n Slash set during Argentina's independence era. Players take on the role of a gaucho who, upon death, is possessed by the demon 'Zupay' and seeks to avenge his companions' deaths and liberate occupied lands.",
+        ImagenesUrl = new[] {
+        "/images/Zupay/Z1.png",
+        "/images/Zupay/Z2.png",
+        "/images/Zupay/Z3.png"
+    },
+        VideoUrl ="/images/Zupay/GZ.mp4",
+        Tecnologias = new[] { "Aseprite"},
+        DemoUrl = "https://demo.url",
+        Contribucion = " En este trabajo, realicé lo que es el arte y las animaciones de todos los enemigos del juego. ",
+        ContribucionEn = "In this project, I created the artwork and animations for all the enemies in the game.",
+        GithubUrl = "https://github.com/url",
+        Año = "2023",
+        Engine = "Unity"
+    },
+};
+
+    private string idiomaActual = "es";
+
+    private Dictionary<string, Dictionary<string, string>> traducciones = new()
+        {
+            ["es"] = new()
+            {
+            // Claves existentes
+                ["sobre_mi_titulo"] = "Sobre mí",
+                ["sobre_mi_descripcion"] = "Actualmente estoy cursando el tercer año de la Licenciatura en Desarrollo de Videojuegos en UADE. Me especializo en Game Development, con fuertes bases tanto en Game Design como en Level Design. Cuento con sólida experiencia en programación de sistemas y desarrollo en diversos engines como Unity y Unreal.",
+                ["estudiante_titulo"] = "Estudiante de Desarrollo de videojuegos",
+                ["habilidades"] = "Habilidades",
+                ["lenguajes"] = "Lenguajes",
+                ["educacion"] = "Educación",
+                ["cursos"] = "Cursos y certificaciones",
+                ["proyectos"] = "Mis Juegos",
+                ["ver_demo"] = "Demo",
+                ["ver_codigo"] = "Código",
+                ["idiomas"] = "Idiomas",
+                ["español"] = "Español",
+                ["ingles"] = "Inglés",
+                ["nativo"] = "Nativo",
+                ["cursando"] = "Cursando el tercer año de la carrera",
+                ["otros"] = "Otros",
+                ["carrera_titulo"] = "Lic. en Desarrollo de videojuegos - UADE",
+                ["secundaria_titulo"] = "Instituto Federico G. Froebel",
+                ["cualidades"] = "Cualidades Personales",
+                ["secundaria"] = "Estudios Secundarios",
+                ["video_no_soportado"] = "Tu navegador no soporta el elemento video.",
+                ["screenshot_alt"] = "Screenshot del proyecto",
+                ["imagen_completa_alt"] = "Imagen en tamaño completo",
+
+            // Nuevas claves
+                ["otros_trabajos"] = "Otros Trabajos",
+                ["proactivo"] = "Proactivo y autónomo",
+                ["trabajo_equipo"] = "Trabajo en equipo",
+                ["aprendizaje"] = "Aprendizaje rápido",
+                ["mi_contribucion"] = "Mi contribución:",
+                ["cerrar"] = "Cerrar",
+                ["ver_mas"] = "Ver más",
+                ["contribucion"] = "Mi contribución:",
+                ["tecnologias"] = "Tecnologías",
+                ["detalles"] = "Detalles",
+                ["año"] = "Año",
+                ["engine"] = "Motor gráfico",
+                ["descargar"] = "Descargar",
+                ["github"] = "GitHub",
+                ["fullstack"] = "FullStack .NET | ComIT",
+                ["cpp"] = "C++ P.O.O. | UTN Buenos Aires",
+                ["fce"] = "FCE International Exam B2 | Cambridge",
+                ["uxui"] = "Diseño UX/UI | Digital House",
+                ["unity"] = "Unity Engine",
+                ["unreal"] = "Unreal Engine",
+                ["level_design"] = "Level Design",
+                ["artist"] = "3D Artist",
+                ["email"] = "Email",
+                ["volver"] = "Volver",
+                ["siguiente"] = "Siguiente",
+                ["anterior"] = "Anterior"
+            },
+            ["en"] = new()
+            {
+            // Claves existentes
+                ["sobre_mi_titulo"] = "About me",
+                ["sobre_mi_descripcion"] = "Currently in my third year of Game Development at UADE University. I specialize in Game Development, with strong foundations in both Game Design and Level Design. I have solid experience in systems programming and development in various engines such as Unity and Unreal.",
+                ["estudiante_titulo"] = "Game Development Student",
+                ["habilidades"] = "Skills",
+                ["lenguajes"] = "Languages",
+                ["educacion"] = "Education",
+                ["cursos"] = "Courses and Certifications",
+                ["proyectos"] = "My Games",
+                ["ver_demo"] = "Demo",
+                ["cualidades"] = "Personal Qualities",
+                ["ver_codigo"] = "Code",
+                ["idiomas"] = "Languages",
+                ["español"] = "Spanish",
+                ["ingles"] = "English",
+                ["nativo"] = "Native",
+                ["cursando"] = "Currently in third year",
+                ["otros"] = "Others",
+                ["secundaria_titulo"] = "Instituto Federico G. Froebel",
+                ["secundaria"] = "High School",
+                ["carrera_titulo"] = "Game Development Degree - UADE",
+                ["video_no_soportado"] = "Your browser doesn't support the video element.",
+                ["screenshot_alt"] = "Project screenshot",
+                ["imagen_completa_alt"] = "Full size image",
+
+            // Nuevas claves
+                ["otros_trabajos"] = "Other Works",
+                ["proactivo"] = "Proactive and autonomous",
+                ["trabajo_equipo"] = "Team work",
+                ["aprendizaje"] = "Fast learner",
+                ["mi_contribucion"] = "My contribution:",
+                ["cerrar"] = "Close",
+                ["ver_mas"] = "See more",
+                ["contribucion"] = "My contribution:",
+                ["tecnologias"] = "Technologies",
+                ["detalles"] = "Details",
+                ["año"] = "Year",
+                ["engine"] = "Game Engine",
+                ["descargar"] = "Download",
+                ["github"] = "GitHub",
+                ["fullstack"] = "FullStack .NET | ComIT",
+                ["cpp"] = "C++ OOP | UTN Buenos Aires",
+                ["fce"] = "FCE International Exam B2 | Cambridge",
+                ["uxui"] = "UX/UI Design | Digital House",
+                ["unity"] = "Unity Engine",
+                ["unreal"] = "Unreal Engine",
+                ["level_design"] = "Level Design",
+                ["artist"] = "3D Artist",
+                ["email"] = "Email",
+                ["volver"] = "Back",
+                ["siguiente"] = "Next",
+                ["anterior"] = "Previous"
+            }
+        };
+
+    private string Traducir(string clave) => traducciones[idiomaActual][clave];
+
+
+    private void ToggleIdioma()
+    {
+        idiomaActual = idiomaActual == "es" ? "en" : "es";
+    }
+
+    private Proyecto proyectoSeleccionado;
+    private string imagenSeleccionada;
+
+    private void MostrarDetalleProyecto(Proyecto proyecto)
+    {
+        proyectoSeleccionado = proyecto;
+    }
+
+    private void CerrarDetalle()
+    {
+        proyectoSeleccionado = null;
+    }
+
+    private void MostrarImagenCompleta(string imagen)
+    {
+        imagenSeleccionada = imagen;
+    }
+
+    private void CerrarImagenCompleta()
+    {
+        imagenSeleccionada = null;
+    }
+
+}
+
+<style>
+    :root {
+        --primary-dark: #0a0b14;
+        --secondary-dark: #171928;
+        --accent-blue: #6666ff;
+        --accent-realblue: #0fffff;
+        --accent-purple: #ffffff;
+        --accent-green: #00ff8c;
+        --text-primary: #ffffff;
+        --text-bone: #E8E6E1;
+        --text-secondary: #00ffff;
+        --hover-color: #2b2f44;
+        --neon-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+        --neon-purple-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3), 0 0 30px rgba(255, 0, 255, 0.1);
+    }
+
+    /* Fondo con efecto de grid */
+    body {
+        font-family: 'Chakra Petch', 'Rajdhani', sans-serif;
+        background-color: var(--primary-dark);
+        color: var(--text-bone);
+    }
+
+    .text-sas {
+        color: var(--text-bone);
+    }
+
+    h6.text-bone {
+        padding-bottom: 15px;
+    }
+
+    .trabajo-descripcion {
+        color: var(--text-bone);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .trabajo-contenido {
+        padding: 1rem 0 0;
+    }
+
+    .trabajo-imagen {
+        margin-bottom: 1rem;
+    }
+
+    }
+
+    /* Mejoras para los botones en este contexto */
+    .trabajo-stripe .btn-light {
+        background: transparent;
+        border: 1px solid var(--accent-blue);
+        color: var(--accent-blue);
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+        .trabajo-stripe .btn-light:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+    /* Contenedor principal y decoraciones */
+    .container-fluid {
+        position: relative;
+        z-index: 1;
+    }
+
+        .container-fluid::before,
+        .container-fluid::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            width: 5px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent 0%, var(--accent-blue) 50%, transparent 100%);
+            box-shadow: var(--neon-shadow);
+            z-index: -1;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .container-fluid::before {
+            left: 20px;
+        }
+
+        .container-fluid::after {
+            right: 20px;
+        }
+
+        .container-fluid:hover::before,
+        .container-fluid:hover::after {
+            opacity: 0.8;
+        }
+
+    /* Elementos decorativos angulares */
+     .decorative-corner {
+        position: fixed;
+        width: 150px;
+        height: 150px;
+        pointer-events: none;
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+    
+        .decorative-corner::before,
+        .decorative-corner::after {
+            content: '';
+            position: absolute;
+            background: var(--accent-blue);
+            box-shadow: var(--neon-shadow);
+            transition: all 0.3s ease;
+        }
+
+    .contribution-section {
+        background: rgba(0, 255, 255, 0.05);
+        padding: 1rem;
+        border-left: 2px solid var(--accent-blue);
+    }
+
+        .contribution-section h6 {
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+    .contribution-text {
+        color: var(--text-bone);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    . /* Esquinas con gradientes y efectos */
+    .corner-top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    .corner-top-left::before {
+        width: 3px;
+        height: 100%;
+        left: 0;
+        background: linear-gradient(to bottom, var(--accent-blue), transparent);
+    }
+
+    .corner-top-left::after {
+        width: 100%;
+        height: 3px;
+        top: 0;
+        background: linear-gradient(to right, var(--accent-blue), transparent);
+    }
+
+    .engine-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 80px; /* Aumentamos la altura del contenedor */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0.5rem;
+        background: linear-gradient(90deg, transparent 0%, rgba(23, 25, 40, 0.8) 20%, var(--secondary-dark) 100% );
+        clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+        border-top: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .cualities {
+        margin-top: 26px;
+    }
+    /* Estilo para el logo */
+    .engine-logo {
+        width: 90px; /* Logo más grande */
+        height: 90px; /* Logo más grande */
+        object-fit: contain;
+        filter: brightness(0) invert(1) drop-shadow(0 0 5px var(--accent-blue));
+        transition: all 0.3s ease;
+        opacity: 0.8;
+        margin-right: 2rem; /* Más margen a la derecha */
+    }
+
+        .engine-logo:hover {
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--accent-blue));
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+    .corner-top-right {
+        top: 20px;
+        right: 20px;
+    }
+
+        .corner-top-right::before {
+            width: 3px;
+            height: 100%;
+            right: 0;
+            background: linear-gradient(to bottom, var(--accent-blue), transparent);
+        }
+
+        .corner-top-right::after {
+            width: 100%;
+            height: 3px;
+            top: 0;
+            background: linear-gradient(to left, var(--accent-blue), transparent);
+        }
+
+
+    .corner-bottom-left {
+        bottom: 20px;
+        left: 20px;
+    }
+
+        .corner-bottom-left::before {
+            width: 3px;
+            height: 100%;
+            left: 0;
+            background: linear-gradient(to top, var(--accent-blue), transparent);
+        }
+
+        .corner-bottom-left::after {
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            background: linear-gradient(to right, var(--accent-blue), transparent);
+        }
+
+    .corner-bottom-right {
+        bottom: 20px;
+        right: 20px;
+    }
+
+        .corner-bottom-right::before {
+            width: 3px;
+            height: 100%;
+            right: 0;
+            background: linear-gradient(to top, var(--accent-blue), transparent);
+        }
+
+        .corner-bottom-right::after {
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            background: linear-gradient(to left, var(--accent-blue), transparent);
+        }
+
+    .language-switch {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .switch-label {
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        cursor: pointer;
+    }
+
+        .switch-label input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--secondary-dark);
+        border: 2px solid var(--accent-blue);
+        transition: .5s;
+        border-radius: 34px;
+        overflow: hidden;
+        box-shadow: var(--neon-shadow);
+    }
+
+    .switch-handle {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 3px;
+        bottom: 2px;
+        background-color: var(--accent-blue);
+        transition: .4s;
+        border-radius: 50%;
+        z-index: 2;
+    }
+
+    input:checked + .slider .switch-handle {
+        transform: translateX(44px);
+    }
+
+    .flag {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        transition: .4s;
+    }
+
+        .flag.left {
+            left: 8px;
+        }
+
+        .flag.right {
+            right: 8px;
+        }
+
+    /* Efecto hover cyberpunk */
+    .slider:hover {
+        box-shadow: 0 0 15px var(--accent-blue);
+    }
+
+    .switch-handle:hover {
+        box-shadow: 0 0 10px var(--accent-blue);
+    }
+    /* Header con estilo cyberpunk mejorado */
+    .bg-primary {
+        background: linear-gradient(135deg, #000428, #004e92) !important;
+        border: 2px solid var(--accent-blue);
+        clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+        box-shadow: var(--neon-shadow);
+        position: relative;
+        overflow: hidden;
+    }
+
+
+        .bg-primary::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, transparent, var(--accent-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bg-primary:hover::before {
+            opacity: 0.3;
+        }
+
+    .badge.bg-purple {
+        background: rgba(147, 112, 219, 0.2) !important; /* Fondo púrpura claro semi-transparente */
+        border-color: var(--accent-purple);
+        color: var(--accent-purple);
+        transition: all 0.3s ease;
+    }
+
+        .badge.bg-purple:hover {
+            background: rgba(147, 112, 219, 0.3) !important; /* Un toque más opaco en hover */
+            color: #D8BFD8; /* Texto más claro en hover */
+        }
+
+    .card {
+        background: rgba(23, 25, 40, 0.9);
+        border: 1px solid #2f3252; /* Color gris inicial del borde */
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card[style*="cursor: pointer"] {
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(23, 25, 40, 0.9) 0%, rgba(15, 17, 32, 0.95) 100%);
+        }
+
+            /* Efecto hover con transición suave al neón */
+            .card[style*="cursor: pointer"]:hover {
+                border-color: #00f7ff; /* Color neón cyan */
+                transform: translateY(-5px);
+                box-shadow: 10px 0 0px rgba(0, 247, 255, .1),0 0 20px rgba(0, 247, 255, 0.2), 0 0 10px rgba(0, 247, 255, 0.3),;
+            }
+
+                /* Che, para darle más punch al efecto */
+                .card[style*="cursor: pointer"]:hover .card-title {
+                    color: #00f7ff;
+                    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+                }
+    /* Badges con efecto de barrido */
+    .badge {
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+        border: 1px solid var(--accent-blue);
+        text-shadow: 0 0 5px var(--accent-blue);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.2), transparent );
+            transition: left 0.5s ease;
+        }
+
+        .badge:hover::after {
+            left: 100%;
+        }
+
+        .badge.bg-info {
+            background: rgba(0, 255, 255, 0.2) !important;
+            color: var(--accent-realblue);
+        }
+
+        .badge.bg-black {
+            background: rgba(0, 0, 0, 0.5) !important;
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+        }
+
+    /* Botones con efecto holograma */
+    .btn-light {
+        background: transparent;
+        border: 2px solid var(--accent-blue);
+        color: var(--accent-blue);
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        text-shadow: 0 0 5px var(--accent-blue);
+        box-shadow: var(--neon-shadow);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+        .btn-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 135deg, transparent 0%, rgba(0, 255, 255, 0.1) 50%, transparent 100% );
+            transform: translateX(-100%) skewX(-45deg);
+            transition: transform 0.5s ease;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: var(--neon-shadow), inset 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+            .btn-light:hover::before {
+                transform: translateX(100%) skewX(-45deg);
+            }
+
+    /* Títulos con efecto de resplandor */
+    .card-title {
+        color: var(--accent-blue);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        position: relative;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+    }
+
+        /* Separador decorativo debajo del título */
+        .card-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient( to right, var(--accent-blue), transparent );
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+    /* Galería con efectos mejorados */
+    .image-gallery img {
+        border: 2px solid var(--accent-blue);
+        clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        box-shadow: var(--neon-shadow);
+        transition: all 0.3s ease;
+    }
+
+        .image-gallery img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 0 20px var(--accent-blue), 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+    /* Che, agrego estos estilos re copados para el modal */
+
+    /* Fondo y estructura base del modal */
+    .modal-content {
+        background: linear-gradient(135deg, rgba(23, 25, 40, 0.95), rgba(10, 11, 20, 0.98));
+        border: 2px solid var(--accent-blue);
+        border-radius: 0;
+        box-shadow: var(--neon-shadow);
+        clip-path: polygon(0 0, 100% 0, 98% 98%, 2% 100%);
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    /* Header del modal */
+    .modal-header {
+        border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        padding: 1.5rem;
+        position: relative;
+        background: linear-gradient(90deg, rgba(23, 25, 40, 0.8), rgba(10, 11, 20, 0.9));
+    }
+
+    .modal-title {
+        color: var(--accent-realblue);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    /* Botón de cierre personalizado */
+    .modal-header .btn-close {
+        background: none;
+        border: none;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        opacity: 0.8;
+    }
+
+        .modal-header .btn-close::before,
+        .modal-header .btn-close::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: var(--accent-blue);
+            top: 50%;
+            left: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-header .btn-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .modal-header .btn-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .modal-header .btn-close:hover::before,
+        .modal-header .btn-close:hover::after {
+            background: var(--accent-realblue);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+    /* Cuerpo del modal */
+    .modal-body {
+        padding: 2rem;
+        color: var(--text-bone);
+        line-height: 1.6;
+    }
+
+    /* Footer del modal */
+    .modal-footer {
+        border-top: 2px solid rgba(0, 255, 255, 0.2);
+        padding: 1.5rem;
+        justify-content: flex-end;
+        gap: 1rem;
+        background: linear-gradient(90deg, rgba(10, 11, 20, 0.9), rgba(23, 25, 40, 0.8));
+    }
+
+        /* Botones del modal */
+        .modal-footer .btn {
+            padding: 0.5rem 1.5rem;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-footer .btn-secondary {
+            background: rgba(23, 25, 40, 0.9);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .modal-footer .btn-primary {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+
+    .modal.show .modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    /* Scrollbar personalizada para el modal */
+    .modal-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+        background: rgba(23, 25, 40, 0.5);
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        border-radius: 4px;
+    }
+
+    /* Espaciado para elementos dentro del modal */
+    .modal-body > * {
+        margin-bottom: 1rem;
+    }
+
+        .modal-body > *:last-child {
+            margin-bottom: 0;
+        }
+
+    /* Efecto de resplandor para elementos interactivos */
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+        background: rgba(23, 25, 40, 0.7);
+        border: 1px solid var(--accent-blue);
+        color: var(--text-primary);
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+
+    /* Efecto de energía para los links */
+    a {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+        a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient( to right, var(--accent-blue), var(--accent-purple) );
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+
+    /* Mejoras para el texto */
+    .trabajo-titulo {
+        color: var(--accent-blue);
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .trabajo-tipo {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .trabajo-descripcion {
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+    }
+    /* Efecto para el botón de idioma */
+    .flag-icon {
+        display: inline-block;
+        filter: drop-shadow(0 0 5px var(--accent-blue));
+        transition: all 0.3s ease;
+    }
+
+        .flag-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 10px var(--accent-purple));
+        }
+
+    /* Scrollbar customizada */
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        box-shadow: var(--neon-shadow);
+    }
+
+    /* Espaciado de cards */
+    .col-md-7 .card {
+        margin-bottom: 1.5rem;
+    }
+
+        .col-md-7 .card:last-child {
+            margin-bottom: 1.5rem;
+        }
+
+        .col-md-7 .card:first-child {
+            margin-top: 0;
+        }
+.scanline-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    opacity: 0.1;
+    animation: 6s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Cards mejoradas */
+.card[style*="cursor: pointer"] {
+    background: linear-gradient(135deg, 
+        rgba(23, 25, 40, 0.9), 
+        rgba(15, 17, 32, 0.95)
+    );
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.card[style*="cursor: pointer"]::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, 
+        var(--accent-blue), 
+        transparent 40%,
+        transparent 60%,
+        var(--accent-realblue)
+    );
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Mejoras en transiciones */
+.btn-light, .badge, .card {
+    transition: all 0.4s ease;
+}
+
+.btn-light:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 20px var(--accent-blue),
+                0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+.badge:hover {
+    transform: translateX(2px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Efecto de título mejorado */
+.display-4 {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.display-4:hover {
+    text-shadow: 2px 2px var(--accent-blue),
+                -2px -2px var(--accent-realblue);
+}
+
+/* Modal mejorado */
+.modal-content {
+    background: linear-gradient(135deg,
+        rgba(23, 25, 40, 0.95),
+        rgba(10, 11, 20, 0.98)
+    );
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Badges mejorados */
+.badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    left: -100%;
+    transition: left 0.6s ease;
+}
+
+.badge:hover::before {
+    left: 100%;
+}
+
+/* Efecto de luz en las cards */
+.card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(0, 255, 255, 0.05),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: transform 0.6s ease;
+}
+
+.card:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+/* Mejoras adicionales */
+.section-title {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-blue);
+    margin-bottom: 2rem;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        var(--accent-blue),
+        var(--accent-realblue)
+    );
+}
+
+/* Efecto de energía para los links */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::before {
+    transform: scaleX(1);
+}
+
+/* Mejora en las imágenes */
+.project-image {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Botones más cyberpunk */
+.btn {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--accent-blue);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 255, 255, 0.2),
+        transparent
+    );
+    top: -100%;
+    left: -100%;
+    transition: all 0.3s ease;
+}
+
+.btn:hover::before {
+    top: 100%;
+    left: 100%;
+}
+
+    .corner-top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    /* Display-4 con efecto de resplandor */
+    .display-4 {
+        position: relative;
+        transition: text-shadow 0.3s ease;
+    }
+
+        .display-4:hover {
+            text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-purple), 0 0 30px var(--accent-blue);
+        }
+
+    .trabajo-stripe {
+        margin-bottom: 5rem; /* Ajusta este valor según sea necesario */
+    }
+
+    .card-body {
+        color: var(--text-primary);
+    }
+</style>
