@@ -363,3 +363,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .vs
+*.dll
+*.pdb
+*.pdb
+*.gz
+*.wasm
