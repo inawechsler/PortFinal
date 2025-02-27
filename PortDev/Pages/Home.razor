@@ -291,9 +291,8 @@
                             @foreach (var imagen in proyectoSeleccionado.ImagenesUrl)
                             {
                                 <div class="col-md-4">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                         data-src="@imagen"
-                                         class="img-fluid rounded gallery-img lazy-load"
+                                    <img src="@imagen"
+                                         class="img-fluid rounded gallery-img"
                                          alt="@Traducir("screenshot_alt")"
                                          @onclick="() => MostrarImagenCompleta(imagen)">
                                 </div>
