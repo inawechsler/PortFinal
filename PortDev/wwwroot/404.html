@@ -1,16 +1,227 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Redirigiendo...</title>
-    <script>
-        // Guardamos la ruta actual en sessionStorage para recuperarla después
-        sessionStorage.setItem('path', window.location.pathname);
-        // Redirigimos a la página principal
-        window.location.href = '/';
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio de Iñaki Wechsler Morral</title>
+    <base href="/PortDev/" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Para GitHub Pages -->
 </head>
 <body>
-    <p>Redirigiendo...</p>
+    <div id="app">
+        <!-- Pantalla de carga minimalista mientras Blazor se inicializa -->
+        <div class="loading-screen">
+            <div class="corner-accent corner-top-left"></div>
+            <div class="corner-accent corner-bottom-right"></div>
+            <div class="loading-container">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div id="blazor-error-ui">
+        Ocurrió un error. Esta aplicación podría no responder hasta que la recargues.
+        <a href="" class="reload">Recargar</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <!-- Para GitHub Pages: Manejo de rutas -->
+    <script>
+        // Manejo de rutas para GitHub Pages
+        let path = sessionStorage.getItem('path');
+        if (path) {
+            sessionStorage.removeItem('path');
+            if (path !== '/' && path !== '/index.html') {
+                history.replaceState(null, '', path);
+            }
+        }
+
+        // Ocultar la pantalla de carga cuando Blazor termine de inicializarse
+        function hideLoadingScreen() {
+            var loadingScreen = document.querySelector('.loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(function () {
+                    loadingScreen.style.display = 'none';
+                    // Restaurar la capacidad de desplazamiento
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+        }
+
+        // Algunas Blazor apps usan este evento
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(hideLoadingScreen, 1000); // Fallback por si Blazor no dispara el evento
+        });
+    </script>
+    <!-- Redirección para rutas SPA en GitHub Pages -->
+    <script type="text/javascript">
+        <script type="text/javascript">
+          // Single Page Apps for GitHub Pages
+            (function(l) {
+            if (l.search[1] === '/' ) {
+              var decoded = l.search.slice(1).split('&').map(function(s) {
+                return s.replace(/~and~/g, '&')
+              }).join('?');
+            window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+            );
+            }
+          }(window.location))
+    </script>
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        // Este evento se dispara cuando Blazor termina de cargar
+        if (window.Blazor) {
+            window.Blazor.addEventListener('afterStarted', function () {
+                hideLoadingScreen();
+            });
+        } else {
+            // Si Blazor no está disponible, ocultamos después de un tiempo razonable
+            setTimeout(hideLoadingScreen, 3000);
+        }
+    </script>
+    <style>
+        :root {
+            --primary-dark: #05060c; /* Color de fondo más oscuro */
+            --secondary-dark: #0c0e18; /* Secundario más oscuro */
+            --accent-blue: #4444bb; /* Azul más oscuro */
+            --accent-cyan: #00bfbf; /* Cyan más oscuro */
+            --neon-shadow: 0 0 8px rgba(0, 191, 191, 0.2);
+        }
+
+        body {
+            font-family: 'Chakra Petch', sans-serif;
+            background-color: var(--primary-dark);
+            margin: 0;
+        }
+
+        /* Pantalla de carga minimalista */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--primary-dark);
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-container {
+            width: 220px;
+        }
+
+        .loading-bar {
+            height: 2px;
+            width: 100%;
+            background-color: var(--secondary-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .loading-bar::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 30%;
+                background-color: var(--accent-cyan);
+                animation: loading 2s infinite;
+                box-shadow: var(--neon-shadow);
+            }
+
+        /* Decoración minimalista */
+        .corner-accent {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+        }
+
+            .corner-accent::before,
+            .corner-accent::after {
+                content: '';
+                position: absolute;
+                background-color: var(--accent-blue);
+            }
+
+        .corner-top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+            .corner-top-left::before {
+                width: 1px;
+                height: 100%;
+                left: 0;
+                background: linear-gradient(to bottom, var(--accent-blue), transparent);
+            }
+
+            .corner-top-left::after {
+                width: 100%;
+                height: 1px;
+                top: 0;
+                background: linear-gradient(to right, var(--accent-blue), transparent);
+            }
+
+        .corner-bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+
+            .corner-bottom-right::before {
+                width: 1px;
+                height: 100%;
+                right: 0;
+                background: linear-gradient(to top, var(--accent-blue), transparent);
+            }
+
+            .corner-bottom-right::after {
+                width: 100%;
+                height: 1px;
+                bottom: 0;
+                background: linear-gradient(to left, var(--accent-blue), transparent);
+            }
+
+        @keyframes loading {
+            0% {
+                left: -30%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Error UI */
+        #blazor-error-ui {
+            background: #ffffe0;
+            bottom: 0;
+            box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+            display: none;
+            left: 0;
+            padding: 0.6rem 1.25rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            color: black;
+        }
+
+            #blazor-error-ui .dismiss {
+                cursor: pointer;
+                position: absolute;
+                right: 0.75rem;
+                top: 0.5rem;
+            }
+    </style>
 </body>
 </html>
