@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PortDev")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1eddd54eac6973f6591798bde8e2dc733f14b804")]
 [assembly: System.Reflection.AssemblyProductAttribute("PortDev")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PortDev")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
