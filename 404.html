@@ -61,17 +61,17 @@
     <!-- Redirección para rutas SPA en GitHub Pages -->
     <script type="text/javascript">
         <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
+          // Single Page Apps for GitHub Pages
             (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
+            if (l.search[1] === '/' ) {
+              var decoded = l.search.slice(1).split('&').map(function(s) {
+                return s.replace(/~and~/g, '&')
+              }).join('?');
             window.history.replaceState(null, null,
             l.pathname.slice(0, -1) + decoded + l.hash
             );
-        }
-      }(window.location))
+            }
+          }(window.location))
     </script>
     </script>
     <script src="_framework/blazor.webassembly.js"></script>
@@ -86,6 +86,64 @@
             setTimeout(hideLoadingScreen, 3000);
         }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var lazyImages = [].slice.call(document.querySelectorAll("img.lazy-load"));
+
+        if ("IntersectionObserver" in window) {
+            let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy-load");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+            });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+            });
+        } else {
+            // Fallback para navegadores que no soportan IntersectionObserver
+            let active = false;
+
+        const lazyLoad = function() {
+                if (active === false) {
+            active = true;
+
+        setTimeout(function() {
+            lazyImages.forEach(function (lazyImage) {
+                if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy-load");
+
+                    lazyImages = lazyImages.filter(function (image) {
+                        return image !== lazyImage;
+                    });
+
+                    if (lazyImages.length === 0) {
+                        document.removeEventListener("scroll", lazyLoad);
+                        window.removeEventListener("resize", lazyLoad);
+                        window.removeEventListener("orientationchange", lazyLoad);
+                    }
+                }
+            });
+
+        active = false;
+                    }, 200);
+                }
+            };
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationchange", lazyLoad);
+        lazyLoad();
+        }
+    });
+    </script>
+
     <style>
         :root {
             --primary-dark: #05060c; /* Color de fondo más oscuro */
