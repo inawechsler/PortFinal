@@ -275,10 +275,11 @@
                 @if (!string.IsNullOrEmpty(proyectoSeleccionado.VideoUrl))
                 {
                     <div class="ratio ratio-16x9 mb-4">
-                        <video controls class="rounded">
-                            <source src="@proyectoSeleccionado.VideoUrl" type="video/mp4">
-                            @Traducir("video_no_soportado")
-                        </video>
+                        <iframe src="@proyectoSeleccionado.VideoUrl"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                        </iframe>
                     </div>
                 }
 
@@ -431,7 +432,7 @@
         "/images/BB/bloodied1.jpg",
         "/images/BB/bloodied2.png"
     },
-        VideoUrl = "/images/BB/BloodiedBreakout.mp4",
+        VideoUrl = "https://youtube.com/embed/PtDsnZgDIEo?si=5hKKcLFn932fPwNm",
         Tecnologias = new[] { "Unity", "C#", "Cinemachine"},
         DemoUrl = "https://demo.url",
         Contribucion = " En este trabajo en equipo, me encargué de toda la programación del juego y lo que es el uso de Unity en el proyecto.",
@@ -450,7 +451,7 @@
         "/images/LP/LP2.jpg",
         "/images/LP/LP3.jpg"
     },
-        VideoUrl = "/images/LP/LPWTG.mp4",
+        VideoUrl = "https://youtube/embed/hPOMOEocFXc",
         Contribucion = " Lideré el desarrollo del mapa en Unreal, donde implementé un mundo vivo y explorable mediante la cuidadosa selección e implementación de assets de Quixel y Sketchfab. Mi contribución incluyó la creación de materiales personalizados para calles y edificios, así como cinemáticas, el diseño y desarrollo de gran parte de las situaciones de juego junto a su Level Design.",
         ContribucionEn = "I led the map development in Unreal, implementing a living, explorable world through careful selection and integration of Quixel and Sketchfab assets. My contribution included creating custom materials for streets and buildings, cinematics, and designing and developing many of the gameplay situations along with their level design.",
         Tecnologias = new[] { "Unreal Engine 5", "Blueprint", "Nanite", "Lumen", "World Partition", "Level Design", "Environmental art" },
@@ -471,7 +472,7 @@
     },
         Contribucion = " En este trabajo en equipo, me encargué de toda la programación del juego y lo que es el uso de Unity en el proyecto. Esto conllevando la programación de una IA inteligente que presente una dificultad considerable y se comporte de manera realista. Por otro lado, realicé un sistema de estados para las pistas y otro de mejoras para contrarrestar estos estados o ganar algo de ventaja frente a los rivales.",
         ContribucionEn = "In this team project, I handled all the game programming and Unity implementation. This involved programming intelligent AI that presents considerable difficulty and behaves realistically. Additionally, I created a state system for the tracks and an upgrade system to counter these states or gain advantages against opponents.",
-        VideoUrl = "/Images/MM/MM.mp4",
+        VideoUrl = "https://youtube/embed/dCyi4TLgsqQ",
         Tecnologias = new[] { "Unity", "C#", "Dijkstra", "ABB", "Quicksort", "Grafos MDA" },
         DemoUrl = "https://demo.url",
         GithubUrl = "https://github.com/url",
@@ -486,7 +487,7 @@
         ImagenesUrl = new[] {
             "/images/DYW/DYW1.jpg", "/images/DYW/DYW2.jpg", "/images/DYW/DYW3.jpg"},
         Tecnologias = new[] { "SDL", "C#", "P.O.O", "Design Patterns"},
-        VideoUrl = "/images/DYW/DYW.mp4",
+        VideoUrl = "https://youtube.com/embed/bX0BQCNb-Zg?si=uObnqCJF-pwxkD38",
         Contribucion = " En este trabajo en equipo, me encargué la programación de los Power Ups presentes en el juego.",
         ContribucionEn = "In this team project, I was responsible for programming the power-ups present in the game.",
         DemoUrl = "https://demo.url",
@@ -504,7 +505,7 @@
         "/Images/RP/RP2.jpg",
         "/Images/RP/RP3.jpg",
     },
-        VideoUrl = "/Images/RP/RP.mp4",
+        VideoUrl = "https://youtube/embed/526FTpnWngc",
         Tecnologias = new[] { "Unity", "C#", "Aseprite"},
         DemoUrl = "https://demo.url",
         Contribucion = " Este trabajo en equipo fue el primer contacto con Unity que tuve. En este, realicé en programación todo lo que son los pickups del juego y el sistema de spawn y cambio de nivel presente en este. Por otro lado, realicé todo el arte, ya sea de armas, pickups, personaje principal y enemigos con sus respectivas animaciones. ",
@@ -523,7 +524,7 @@
         "/images/Zupay/Z2.png",
         "/images/Zupay/Z3.png"
     },
-        VideoUrl ="/images/Zupay/GZ.mp4",
+        VideoUrl ="https://youtube/embed/IuS5qNoXQGM",
         Tecnologias = new[] { "Aseprite"},
         DemoUrl = "https://demo.url",
         Contribucion = " En este trabajo, realicé lo que es el arte y las animaciones de todos los enemigos del juego. ",
