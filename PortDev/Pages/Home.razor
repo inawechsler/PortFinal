@@ -68,10 +68,10 @@
                     <div class="mb-3">
                         <h6 class="fw-bold">Game Development</h6>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-black shine-effect">@Traducir("unity")</span>
-                            <span class="badge bg-black shine-effect">@Traducir("unreal")</span>
-                            <span class="badge bg-black shine-effect">@Traducir("level_design")</span>
-                            <span class="badge bg-black shine-effect">@Traducir("artist")</span>
+                            <span class="badge bg-black">@Traducir("unity")</span>
+                            <span class="badge bg-black">@Traducir("unreal")</span>
+                            <span class="badge bg-black">@Traducir("level_design")</span>
+                            <span class="badge bg-black">@Traducir("artist")</span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -107,28 +107,21 @@
                 <div class="card-body">
                     <h2 class="card-title h4 mb-3">@Traducir("cualidades")</h2>
                     <div class="mb-3">
-                        <div class="quality-item d-flex align-items-center mb-3">
-                            <div class="quality-icon">
-                                <i class="bi bi-lightning-charge-fill me-2 text-info"></i>
-                            </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-lightning-charge-fill me-2 text-info"></i>
                             <span>@Traducir("proactivo")</span>
                         </div>
-                        <div class="quality-item d-flex align-items-center mb-3">
-                            <div class="quality-icon">
-                                <i class="bi bi-people-fill me-2 text-info"></i>
-                            </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-people-fill me-2 text-info"></i>
                             <span>@Traducir("trabajo_equipo")</span>
                         </div>
-                        <div class="quality-item d-flex align-items-center mb-3">
-                            <div class="quality-icon">
-                                <i class="bi bi-book-fill me-2 text-info"></i>
-                            </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-book-fill me-2 text-info"></i>
                             <span>@Traducir("aprendizaje")</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- Right Column -->
@@ -201,29 +194,24 @@
     <div class="row g-4">
         @foreach (var proyecto in proyectos)
         {
-            <!-- Modificar las tarjetas de proyectos para agregar efectos visuales -->
-            <div class="card h-100" @onclick="() => MostrarDetalleProyecto(proyecto)" style="cursor: pointer;">
-                <div class="card-body">
-                    <h3 class="card-title h5 mb-3">@proyecto.Titulo</h3>
-                    <div class="tech-tags mb-3">
-                        @if (proyecto.Tecnologias.Length > 0)
-                        {
-                            <span class="badge bg-info">@proyecto.Tecnologias[0]</span>
-                        }
-                    </div>
-                    <div class="engine-container">
-                        @if (proyecto.Engine == "Unity")
-                        {
-                            <img src="https://inawechsler.github.io/PortFinal/Images/unity-logo.png" alt="@Traducir("unity")" class="engine-logo" />
-                        }
-                        else if (proyecto.Engine == "Unreal")
-                        {
-                            <img src="https://inawechsler.github.io/PortFinal/Images/Engines/unreal-logo.png" alt="@Traducir("unreal")" class="engine-logo" />
-                        }
-                        else if (proyecto.Engine == "SDL")
-                        {
-                            <img src="https://inawechsler.github.io/PortFinal/Images/Engines/C.png" alt="SDL" class="engine-logo" />
-                        }
+            <div class="col-md-6">
+                <div class="card h-100" @onclick="() => MostrarDetalleProyecto(proyecto)" style="cursor: pointer;">
+                    <div class="card-body">
+                        <h3 class="card-title h5 mb-3">@proyecto.Titulo</h3>
+                        <div class="engine-container">
+                            @if (proyecto.Engine == "Unity")
+                            {
+                                <img src="https://inawechsler.github.io/PortFinal/Images/unity-logo.png" alt="@Traducir("unity")" class="engine-logo" />
+                            }
+                            else if (proyecto.Engine == "Unreal")
+                            {
+                                <img src="https://inawechsler.github.io/PortFinal/Images/Engines/unreal-logo.png" alt="@Traducir("unreal")" class="engine-logo" />
+                            }
+                            else if (proyecto.Engine == "SDL")
+                            {
+                                <img src="https://inawechsler.github.io/PortFinal/Images/Engines/C.png" alt="SDL" class="engine-logo" />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -401,7 +389,7 @@
         Titulo = "Concepto de juego junto a flow de pantallas",
         Descripcion = "En este trabajo en equipo, creamos la idea de un juego, para el cual tuvimos que realizar un Game Treatment, un High Concept y finalmente un GDD. Por otro lado realizamos todas las pantallas del mismo revisando cuidadosamente la UI para que sea una experiencia agradable para nuestros usuarios",
         DescripcionEn = "In this team project, we created a game concept that included developing a Game Treatment, a High Concept, and finally a Game Design Document (GDD). Additionally, we designed all the UI screens with careful attention to user experience to ensure an enjoyable interface for our players.",
-        ImagenesUrl = new[] { "Images/Peccator/Pe1.jpg",
+        ImagenesUrl = new[] { "/images/Peccator/Pe1.jpg",
         "Images/Peccator/Pe3.jpg",
         "Images/Peccator/Pe4.jpg",
         "Images/Peccator/Pe1.jpg",
@@ -687,651 +675,937 @@
 
 }
 
-<style>
-/* Mejoras de paleta de colores y variables */
-:root {
-    --primary-dark: #0a0b14;
-    --secondary-dark: #171928;
-    --accent-blue: #00c8ff;
-    --accent-purple: #bf00ff;
-    --accent-realblue: #00ffff;
-    --accent-green: #00ff8c;
-    --text-primary: #ffffff;
-    --text-bone: #E8E6E1;
-    --text-secondary: #00ffff;
-    --hover-color: #2b2f44;
-    --neon-shadow: 0 0 10px rgba(0, 200, 255, 0.5), 0 0 20px rgba(0, 200, 255, 0.3), 0 0 30px rgba(0, 200, 255, 0.1);
-    --neon-purple-shadow: 0 0 10px rgba(191, 0, 255, 0.5), 0 0 20px rgba(191, 0, 255, 0.3), 0 0 30px rgba(191, 0, 255, 0.1);
-}
 
-    .subtitle {
-        color: var(--accent-blue);
-        opacity: 0.8;
-        font-size: 1.1rem;
-        margin-top: -5px;
-        margin-bottom: 10px;
+<style>
+    :root {
+        --primary-dark: #0a0b14;
+        --secondary-dark: #171928;
+        --accent-blue: #6666ff;
+        --accent-realblue: #0fffff;
+        --accent-purple: #ffffff;
+        --accent-green: #00ff8c;
+        --text-primary: #ffffff;
+        --text-bone: #E8E6E1;
+        --text-secondary: #00ffff;
+        --hover-color: #2b2f44;
+        --neon-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+        --neon-purple-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3), 0 0 30px rgba(255, 0, 255, 0.1);
     }
 
-    .quality-icon {
-        background: rgba(0, 200, 255, 0.1);
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        border: 1px solid rgba(0, 200, 255, 0.3);
+    /* Fondo con efecto de grid */
+    body {
+        font-family: 'Chakra Petch', 'Rajdhani', sans-serif;
+        background-color: var(--primary-dark);
+        color: var(--text-bone);
+    }
+
+    .text-sas {
+        color: var(--text-bone);
+    }
+
+    h6.text-bone {
+        padding-bottom: 15px;
+    }
+
+    .trabajo-descripcion {
+        color: var(--text-bone);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .trabajo-contenido {
+        padding: 1rem 0 0;
+    }
+
+    .trabajo-imagen {
+        margin-bottom: 1rem;
+    }
+
+    }
+
+    /* Mejoras para los botones en este contexto */
+    .trabajo-stripe .btn-light {
+        background: transparent;
+        border: 1px solid var(--accent-blue);
+        color: var(--accent-blue);
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
         transition: all 0.3s ease;
     }
 
-    .quality-item:hover .quality-icon {
-        background: rgba(0, 200, 255, 0.2);
-        transform: scale(1.1);
+        .trabajo-stripe .btn-light:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+    /* Contenedor principal y decoraciones */
+    .container-fluid {
+        position: relative;
+        z-index: 1;
     }
 
-    .tech-tags {
+        .container-fluid::before,
+        .container-fluid::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            width: 5px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent 0%, var(--accent-blue) 50%, transparent 100%);
+            box-shadow: var(--neon-shadow);
+            z-index: -1;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .container-fluid::before {
+            left: 20px;
+        }
+
+        .container-fluid::after {
+            right: 20px;
+        }
+
+        .container-fluid:hover::before,
+        .container-fluid:hover::after {
+            opacity: 0.8;
+        }
+
+    /* Elementos decorativos angulares */
+     .decorative-corner {
+        position: fixed;
+        width: 150px;
+        height: 150px;
+        pointer-events: none;
+        z-index: -1;
+        transition: all 0.3s ease;
+    }
+    
+        .decorative-corner::before,
+        .decorative-corner::after {
+            content: '';
+            position: absolute;
+            background: var(--accent-blue);
+            box-shadow: var(--neon-shadow);
+            transition: all 0.3s ease;
+        }
+
+    .contribution-section {
+        background: rgba(0, 255, 255, 0.05);
+        padding: 1rem;
+        border-left: 2px solid var(--accent-blue);
+    }
+
+        .contribution-section h6 {
+            color: var(--accent-blue);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+    .contribution-text {
+        color: var(--text-bone);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    . /* Esquinas con gradientes y efectos */
+    .corner-top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    .corner-top-left::before {
+        width: 3px;
+        height: 100%;
+        left: 0;
+        background: linear-gradient(to bottom, var(--accent-blue), transparent);
+    }
+
+    .corner-top-left::after {
+        width: 100%;
+        height: 3px;
+        top: 0;
+        background: linear-gradient(to right, var(--accent-blue), transparent);
+    }
+
+    .engine-container {
         position: absolute;
-        top: 10px;
-        left: 10px;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 80px; /* Aumentamos la altura del contenedor */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0.5rem;
+        background: linear-gradient(90deg, transparent 0%, rgba(23, 25, 40, 0.8) 20%, var(--secondary-dark) 100% );
+        clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+        border-top: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .cualities {
+        margin-top: 26px;
+    }
+    /* Estilo para el logo */
+    .engine-logo {
+        width: 90px; /* Logo más grande */
+        height: 90px; /* Logo más grande */
+        object-fit: contain;
+        filter: brightness(0) invert(1) drop-shadow(0 0 5px var(--accent-blue));
+        transition: all 0.3s ease;
+        opacity: 0.8;
+        margin-right: 2rem; /* Más margen a la derecha */
+    }
+
+        .engine-logo:hover {
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--accent-blue));
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+    .corner-top-right {
+        top: 20px;
+        right: 20px;
+    }
+
+        .corner-top-right::before {
+            width: 3px;
+            height: 100%;
+            right: 0;
+            background: linear-gradient(to bottom, var(--accent-blue), transparent);
+        }
+
+        .corner-top-right::after {
+            width: 100%;
+            height: 3px;
+            top: 0;
+            background: linear-gradient(to left, var(--accent-blue), transparent);
+        }
+
+
+    .corner-bottom-left {
+        bottom: 20px;
+        left: 20px;
+    }
+
+        .corner-bottom-left::before {
+            width: 3px;
+            height: 100%;
+            left: 0;
+            background: linear-gradient(to top, var(--accent-blue), transparent);
+        }
+
+        .corner-bottom-left::after {
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            background: linear-gradient(to right, var(--accent-blue), transparent);
+        }
+
+    .corner-bottom-right {
+        bottom: 20px;
+        right: 20px;
+    }
+
+        .corner-bottom-right::before {
+            width: 3px;
+            height: 100%;
+            right: 0;
+            background: linear-gradient(to top, var(--accent-blue), transparent);
+        }
+
+        .corner-bottom-right::after {
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            background: linear-gradient(to left, var(--accent-blue), transparent);
+        }
+
+    .language-switch {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .switch-label {
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        height: 34px;
+        cursor: pointer;
+    }
+
+        .switch-label input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--secondary-dark);
+        border: 2px solid var(--accent-blue);
+        transition: .5s;
+        border-radius: 34px;
+        overflow: hidden;
+        box-shadow: var(--neon-shadow);
+    }
+
+    .switch-handle {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 3px;
+        bottom: 2px;
+        background-color: var(--accent-blue);
+        transition: .4s;
+        border-radius: 50%;
         z-index: 2;
     }
 
-    .shine-effect {
+    input:checked + .slider .switch-handle {
+        transform: translateX(44px);
+    }
+
+    .flag {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 20px;
+        transition: .4s;
+    }
+
+        .flag.left {
+            left: 8px;
+        }
+
+        .flag.right {
+            right: 8px;
+        }
+
+    /* Efecto hover cyberpunk */
+    .slider:hover {
+        box-shadow: 0 0 15px var(--accent-blue);
+    }
+
+    .switch-handle:hover {
+        box-shadow: 0 0 10px var(--accent-blue);
+    }
+    /* Header con estilo cyberpunk mejorado */
+    .bg-primary {
+        background: linear-gradient(135deg, #000428, #004e92) !important;
+        border: 2px solid var(--accent-blue);
+        clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+        box-shadow: var(--neon-shadow);
         position: relative;
         overflow: hidden;
     }
 
-        .shine-effect::after {
+
+        .bg-primary::before {
             content: '';
             position: absolute;
-            top: -100%;
-            left: -100%;
-            width: 300%;
-            height: 300%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
+            inset: -2px;
+            background: linear-gradient(45deg, transparent, var(--accent-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .shine-effect:hover::after {
-            top: 100%;
+        .bg-primary:hover::before {
+            opacity: 0.3;
+        }
+
+    .badge.bg-purple {
+        background: rgba(147, 112, 219, 0.2) !important; /* Fondo púrpura claro semi-transparente */
+        border-color: var(--accent-purple);
+        color: var(--accent-purple);
+        transition: all 0.3s ease;
+    }
+
+        .badge.bg-purple:hover {
+            background: rgba(147, 112, 219, 0.3) !important; /* Un toque más opaco en hover */
+            color: #D8BFD8; /* Texto más claro en hover */
+        }
+
+    .card {
+        background: rgba(23, 25, 40, 0.9);
+        border: 1px solid #2f3252; /* Color gris inicial del borde */
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card[style*="cursor: pointer"] {
+            position: relative;
+            overflow: hidden;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(23, 25, 40, 0.9) 0%, rgba(15, 17, 32, 0.95) 100%);
+        }
+
+            /* Efecto hover con transición suave al neón */
+            .card[style*="cursor: pointer"]:hover {
+                border-color: #00f7ff; /* Color neón cyan */
+                transform: translateY(-5px);
+                box-shadow: 10px 0 0px rgba(0, 247, 255, .1),0 0 20px rgba(0, 247, 255, 0.2), 0 0 10px rgba(0, 247, 255, 0.3),;
+            }
+
+                /* Che, para darle más punch al efecto */
+                .card[style*="cursor: pointer"]:hover .card-title {
+                    color: #00f7ff;
+                    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+                }
+    /* Badges con efecto de barrido */
+    .badge {
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+        border: 1px solid var(--accent-blue);
+        text-shadow: 0 0 5px var(--accent-blue);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.2), transparent );
+            transition: left 0.5s ease;
+        }
+
+        .badge:hover::after {
             left: 100%;
         }
-/* Mejora de fondo general */
-body {
-    font-family: 'Chakra Petch', 'Rajdhani', sans-serif;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, #0d1028 100%);
-    color: var(--text-bone);
-    position: relative;
-    overflow-x: hidden;
-}
 
-/* Efecto de grid en el fondo */
-body::before {
-    content: '';
+        .badge.bg-info {
+            background: rgba(0, 255, 255, 0.2) !important;
+            color: var(--accent-realblue);
+        }
+
+        .badge.bg-black {
+            background: rgba(0, 0, 0, 0.5) !important;
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+        }
+
+    /* Botones con efecto holograma */
+    .btn-light {
+        background: transparent;
+        border: 2px solid var(--accent-blue);
+        color: var(--accent-blue);
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        text-shadow: 0 0 5px var(--accent-blue);
+        box-shadow: var(--neon-shadow);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+        .btn-light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient( 135deg, transparent 0%, rgba(0, 255, 255, 0.1) 50%, transparent 100% );
+            transform: translateX(-100%) skewX(-45deg);
+            transition: transform 0.5s ease;
+        }
+
+        .btn-light:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: var(--neon-shadow), inset 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+            .btn-light:hover::before {
+                transform: translateX(100%) skewX(-45deg);
+            }
+
+    /* Títulos con efecto de resplandor */
+    .card-title {
+        color: var(--accent-blue);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        position: relative;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+    }
+
+        /* Separador decorativo debajo del título */
+        .card-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient( to right, var(--accent-blue), transparent );
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+    /* Galería con efectos mejorados */
+    .image-gallery img {
+        border: 2px solid var(--accent-blue);
+        clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        box-shadow: var(--neon-shadow);
+        transition: all 0.3s ease;
+    }
+
+        .image-gallery img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 0 20px var(--accent-blue), 0 0 40px rgba(0, 255, 255, 0.3);
+        }
+    /* Che, agrego estos estilos re copados para el modal */
+
+    /* Fondo y estructura base del modal */
+    .modal-content {
+        background: linear-gradient(135deg, rgba(23, 25, 40, 0.95), rgba(10, 11, 20, 0.98));
+        border: 2px solid var(--accent-blue);
+        border-radius: 0;
+        box-shadow: var(--neon-shadow);
+        clip-path: polygon(0 0, 100% 0, 98% 98%, 2% 100%);
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    /* Header del modal */
+    .modal-header {
+        border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        padding: 1.5rem;
+        position: relative;
+        background: linear-gradient(90deg, rgba(23, 25, 40, 0.8), rgba(10, 11, 20, 0.9));
+    }
+
+    .modal-title {
+        color: var(--accent-realblue);
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    /* Botón de cierre personalizado */
+    .modal-header .btn-close {
+        background: none;
+        border: none;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        opacity: 0.8;
+    }
+
+        .modal-header .btn-close::before,
+        .modal-header .btn-close::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: var(--accent-blue);
+            top: 50%;
+            left: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-header .btn-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .modal-header .btn-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .modal-header .btn-close:hover::before,
+        .modal-header .btn-close:hover::after {
+            background: var(--accent-realblue);
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+    /* Cuerpo del modal */
+    .modal-body {
+        padding: 2rem;
+        color: var(--text-bone);
+        line-height: 1.6;
+    }
+
+    /* Footer del modal */
+    .modal-footer {
+        border-top: 2px solid rgba(0, 255, 255, 0.2);
+        padding: 1.5rem;
+        justify-content: flex-end;
+        gap: 1rem;
+        background: linear-gradient(90deg, rgba(10, 11, 20, 0.9), rgba(23, 25, 40, 0.8));
+    }
+
+        /* Botones del modal */
+        .modal-footer .btn {
+            padding: 0.5rem 1.5rem;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-footer .btn-secondary {
+            background: rgba(23, 25, 40, 0.9);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .modal-footer .btn-primary {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+
+    .modal.show .modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    /* Scrollbar personalizada para el modal */
+    .modal-body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+        background: rgba(23, 25, 40, 0.5);
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        border-radius: 4px;
+    }
+
+    /* Espaciado para elementos dentro del modal */
+    .modal-body > * {
+        margin-bottom: 1rem;
+    }
+
+        .modal-body > *:last-child {
+            margin-bottom: 0;
+        }
+
+    /* Efecto de resplandor para elementos interactivos */
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+        background: rgba(23, 25, 40, 0.7);
+        border: 1px solid var(--accent-blue);
+        color: var(--text-primary);
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+
+    /* Efecto de energía para los links */
+    a {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+        a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient( to right, var(--accent-blue), var(--accent-purple) );
+            transition: width 0.3s ease;
+        }
+
+        a:hover::after {
+            width: 100%;
+        }
+
+
+    /* Mejoras para el texto */
+    .trabajo-titulo {
+        color: var(--accent-blue);
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .trabajo-tipo {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .trabajo-descripcion {
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+    }
+    /* Efecto para el botón de idioma */
+    .flag-icon {
+        display: inline-block;
+        filter: drop-shadow(0 0 5px var(--accent-blue));
+        transition: all 0.3s ease;
+    }
+
+        .flag-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+            filter: drop-shadow(0 0 10px var(--accent-purple));
+        }
+
+    /* Scrollbar customizada */
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        box-shadow: var(--neon-shadow);
+    }
+
+    /* Espaciado de cards */
+    .col-md-7 .card {
+        margin-bottom: 1.5rem;
+    }
+
+        .col-md-7 .card:last-child {
+            margin-bottom: 1.5rem;
+        }
+
+        .col-md-7 .card:first-child {
+            margin-top: 0;
+        }
+.scanline-effect {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 200, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: -1;
-    opacity: 0.3;
-    pointer-events: none;
-}
-
-/* Efecto de escáner horizontal usando gradiente estático */
-.scanline {
-    position: fixed;
-    top: 50%;
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--accent-blue);
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
     opacity: 0.1;
-    box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
-    z-index: 9999;
+    animation: 6s linear infinite;
     pointer-events: none;
-    transition: top 0.1s linear;
+    z-index: 9999;
 }
 
-/* Al hacer hover en el body cambia la posición del scanline */
-body:hover .scanline {
-    top: 30%;
-}
-
-/* Mejoras para el Header */
-.bg-primary {
-    background: linear-gradient(135deg, #000428, #004e92) !important;
-    border: 2px solid var(--accent-blue);
-    box-shadow: var(--neon-shadow);
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
-}
-
-.bg-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 150%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.2), transparent);
-    transform: skewX(-30deg);
-    transition: left 6s ease-in-out;
-}
-
-.bg-primary:hover::after {
-    left: 100%;
-}
-
-/* Mejoras de Tarjetas de Proyectos */
+/* Cards mejoradas */
 .card[style*="cursor: pointer"] {
-    background: linear-gradient(135deg, rgba(23, 25, 40, 0.9), rgba(15, 17, 32, 0.95));
-    border: 1px solid rgba(0, 200, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, 
+        rgba(23, 25, 40, 0.9), 
+        rgba(15, 17, 32, 0.95)
+    );
+    border: 1px solid transparent;
     position: relative;
     overflow: hidden;
-    min-height: 170px;
 }
 
 .card[style*="cursor: pointer"]::before {
     content: '';
     position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(45deg,
-        transparent,
-        rgba(0, 200, 255, 0.1),
-        transparent);
-    transform: rotate(45deg);
-    transition: all 0.6s ease;
+    inset: -1px;
+    background: linear-gradient(45deg, 
+        var(--accent-blue), 
+        transparent 40%,
+        transparent 60%,
+        var(--accent-realblue)
+    );
+    z-index: -1;
+    opacity: 0.5;
 }
 
-.card[style*="cursor: pointer"]:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 5px 20px rgba(0, 200, 255, 0.3), 0 0 0 1px rgba(0, 200, 255, 0.4);
+/* Mejoras en transiciones */
+.btn-light, .badge, .card {
+    transition: all 0.4s ease;
 }
 
-.card[style*="cursor: pointer"]:hover::before {
-    top: 100%;
-    left: 100%;
+.btn-light:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 20px var(--accent-blue),
+                0 0 40px rgba(0, 255, 255, 0.2);
 }
 
-/* Mejoras para los logos de Engine */
-.engine-container {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0.5rem;
-    background: linear-gradient(90deg, transparent 0%, rgba(23, 25, 40, 0.8) 20%, var(--secondary-dark) 100%);
-    clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
-    border-top: 1px solid rgba(0, 200, 255, 0.2);
+.badge:hover {
+    transform: translateX(2px);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
 }
 
-.engine-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px var(--accent-blue));
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    opacity: 0.8;
-    margin-right: 2rem;
+/* Efecto de título mejorado */
+.display-4 {
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-.engine-logo:hover {
-    filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--accent-blue));
-    transform: scale(1.2) rotate(5deg);
-    opacity: 1;
+.display-4:hover {
+    text-shadow: 2px 2px var(--accent-blue),
+                -2px -2px var(--accent-realblue);
 }
 
-/* Mejoras para badges de habilidades */
+/* Modal mejorado */
+.modal-content {
+    background: linear-gradient(135deg,
+        rgba(23, 25, 40, 0.95),
+        rgba(10, 11, 20, 0.98)
+    );
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Badges mejorados */
 .badge {
     position: relative;
     overflow: hidden;
-    padding: 0.5rem 0.8rem;
-    margin: 0.2rem;
-    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-    border: 1px solid var(--accent-blue);
-    text-shadow: 0 0 5px var(--accent-blue);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    transition: all 0.3s ease;
 }
 
 .badge::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.6s ease;
-    opacity: 0;
-}
-
-.badge:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 200, 255, 0.4);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    left: -100%;
+    transition: left 0.6s ease;
 }
 
 .badge:hover::before {
-    opacity: 1;
-    transform: rotate(45deg) translate(50%, 50%);
-}
-
-.badge.bg-info {
-    background: rgba(0, 200, 255, 0.2) !important;
-    color: var(--accent-realblue);
-}
-
-.badge.bg-secondary {
-    background: rgba(40, 44, 80, 0.5) !important;
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
-}
-
-.badge.bg-black {
-    background: rgba(0, 0, 0, 0.5) !important;
-    border-color: var(--accent-purple);
-    color: var(--accent-purple);
-}
-
-.badge.bg-purple {
-    background: rgba(147, 112, 219, 0.2) !important;
-    border-color: var(--accent-purple);
-    color: var(--accent-purple);
-}
-
-/* Botones mejorados */
-.btn-light {
-    background: transparent;
-    border: 2px solid var(--accent-blue);
-    color: var(--accent-blue);
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-    text-shadow: 0 0 5px var(--accent-blue);
-    box-shadow: var(--neon-shadow);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    padding: 0.5rem 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.btn-light::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-}
-
-.btn-light:hover {
-    background: var(--accent-blue);
-    color: var(--primary-dark);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 200, 255, 0.4), 0 0 20px rgba(0, 200, 255, 0.3);
-}
-
-.btn-light:hover::before {
     left: 100%;
 }
 
-/* Mejoras para el switch de idioma */
-.language-switch {
-    display: inline-block;
-    margin: 10px;
-    position: relative;
-}
-
-.language-switch::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90px;
-    height: 44px;
-    border-radius: 34px;
-    background: transparent;
-    border: 1px solid var(--accent-blue);
-    box-shadow: var(--neon-shadow);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.language-switch:hover::after {
-    opacity: 1;
-}
-
-/* Mejoras para el switch */
-.switch-label {
-    position: relative;
-    display: inline-block;
-    width: 80px;
-    height: 34px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.switch-label:hover {
-    transform: scale(1.05);
-}
-
-.slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--secondary-dark);
-    border: 2px solid var(--accent-blue);
-    transition: all 0.3s ease;
-    border-radius: 34px;
-    overflow: hidden;
-    box-shadow: var(--neon-shadow);
-}
-
-.switch-handle {
-    position: absolute;
-    height: 26px;
-    width: 26px;
-    left: 3px;
-    bottom: 2px;
-    background-color: var(--accent-blue);
-    transition: all 0.3s ease;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-input:checked + .slider .switch-handle {
-    transform: translateX(44px);
-    background-color: var(--accent-blue);
-    box-shadow: 0 0 10px var(--accent-blue);
-}
-
-.slider:hover .switch-handle {
-    box-shadow: 0 0 15px var(--accent-blue);
-}
-
-/* Mejoras para las secciones de proyectos */
-.trabajo-stripe {
-    padding: 2rem;
-    margin-bottom: 3rem;
-    border-radius: 8px;
-    background: rgba(23, 25, 40, 0.7);
-    border-left: 3px solid var(--accent-blue);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.trabajo-stripe:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 200, 255, 0.2);
-    border-left: 3px solid var(--accent-purple);
-}
-
-.trabajo-titulo {
-    color: var(--accent-blue);
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-.trabajo-stripe:hover .trabajo-titulo {
-    color: var(--accent-purple);
-    text-shadow: 0 0 10px rgba(191, 0, 255, 0.3);
-}
-
-/* Mejoras para galería de imágenes */
-.gallery-img {
-    border: 2px solid var(--accent-blue);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.gallery-img:hover {
-    transform: scale(1.05);
-    border-color: var(--accent-purple);
-    box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
-}
-
-/* Mejoras para el modal de proyectos */
-.modal-content {
-    background: linear-gradient(135deg, rgba(23, 25, 40, 0.95), rgba(10, 11, 20, 0.98));
-    border: 2px solid var(--accent-blue);
-    border-radius: 0;
-    box-shadow: var(--neon-shadow);
-    clip-path: polygon(0 0, 100% 0, 98% 98%, 2% 100%);
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.modal-content::before {
+/* Efecto de luz en las cards */
+.card::after {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(0, 200, 255, 0.05), transparent);
+    background: linear-gradient(
+        transparent,
+        rgba(0, 255, 255, 0.05),
+        transparent
+    );
     transform: rotate(45deg);
-    transition: all 0.8s ease;
+    transition: transform 0.6s ease;
 }
 
-.modal-content:hover::before {
+.card:hover::after {
     transform: rotate(45deg) translate(50%, 50%);
 }
 
-.modal-header {
-    border-bottom: 2px solid rgba(0, 200, 255, 0.2);
-    padding: 1.5rem;
+/* Mejoras adicionales */
+.section-title {
     position: relative;
-    background: linear-gradient(90deg, rgba(23, 25, 40, 0.8), rgba(10, 11, 20, 0.9));
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-blue);
+    margin-bottom: 2rem;
 }
 
-.modal-title {
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-}
-
-.modal-content:hover .modal-title {
-    text-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
-}
-
-/* Mejoras para decoraciones angulares */
-.decorative-corner {
-    position: fixed;
-    width: 150px;
-    height: 150px;
-    pointer-events: none;
-    z-index: -1;
-    transition: all 0.5s ease;
-}
-
-.decorative-corner::before,
-.decorative-corner::after {
+.section-title::before {
     content: '';
     position: absolute;
-    background: var(--accent-blue);
-    box-shadow: var(--neon-shadow);
-    transition: all 0.5s ease;
-}
-
-.corner-top-left {
-    top: 20px;
-    left: 20px;
-}
-
-.corner-top-left::before {
-    width: 3px;
-    height: 100%;
-    left: 0;
-    background: linear-gradient(to bottom, var(--accent-blue), transparent);
-}
-
-.corner-top-left::after {
-    width: 100%;
-    height: 3px;
+    left: -3px;
     top: 0;
-    background: linear-gradient(to right, var(--accent-blue), transparent);
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        var(--accent-blue),
+        var(--accent-realblue)
+    );
 }
 
-.corner-top-left:hover::before,
-.corner-top-left:hover::after {
-    background: linear-gradient(to bottom, var(--accent-purple), transparent);
-    box-shadow: var(--neon-purple-shadow);
-}
-
-/* Scrollbar personalizada */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--secondary-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent-blue);
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-purple);
-}
-
-/* Mejoras para las cards de habilidades */
-.card {
-    background: rgba(23, 25, 40, 0.9);
-    border: 1px solid rgba(0, 200, 255, 0.2);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    margin-bottom: 1.5rem;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 200, 255, 0.4);
-}
-
-.card-title {
-    color: var(--accent-blue);
-    text-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
-    font-weight: 600;
-    margin-bottom: 1.2rem;
+/* Efecto de energía para los links */
+.nav-link {
     position: relative;
-    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-.card:hover .card-title {
-    color: var(--accent-purple);
-    text-shadow: 0 0 10px rgba(191, 0, 255, 0.3);
-}
-
-.card-title::after {
+.nav-link::before {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -8px;
-    width: 50px;
+    bottom: 0;
+    width: 100%;
     height: 2px;
-    background: linear-gradient(to right, var(--accent-blue), transparent);
-    transition: all 0.3s ease;
+    background: var(--accent-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
-.card:hover .card-title::after {
-    width: 70px;
-    background: linear-gradient(to right, var(--accent-purple), transparent);
+.nav-link:hover::before {
+    transform: scaleX(1);
 }
 
-/* Efecto glitch para textos importantes */
-.display-4 {
+/* Mejora en las imágenes */
+.project-image {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1) contrast(1.1);
+}
+
+/* Botones más cyberpunk */
+.btn {
     position: relative;
-    color: var(--text-primary);
-    text-shadow: 0 0 5px var(--accent-blue);
+    overflow: hidden;
+    border: 1px solid var(--accent-blue);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 255, 255, 0.2),
+        transparent
+    );
+    top: -100%;
+    left: -100%;
     transition: all 0.3s ease;
 }
 
-.display-4:hover {
-    text-shadow:
-        -2px 0 var(--accent-blue),
-        2px 2px var(--accent-purple),
-        0 -2px var(--accent-blue);
+.btn:hover::before {
+    top: 100%;
+    left: 100%;
 }
 
-/* Mejoras para iconos en cualidades */
-.bi {
-    transition: all 0.3s ease;
-}
-
-.d-flex:hover .bi {
-    transform: scale(1.2);
-    color: var(--accent-blue) !important;
-}
-
-/* Iconos en enlaces */
-.btn .bi {
-    transition: all 0.3s ease;
-}
-
-.btn:hover .bi {
-    transform: translateY(-2px);
-}
-
-    .engine-logo {
-        width: 70px;
-        height: 70px;
+    .corner-top-left {
+        top: 20px;
+        left: 20px;
     }
 
-    .engine-container {
-        height: 60px;
+    /* Display-4 con efecto de resplandor */
+    .display-4 {
+        position: relative;
+        transition: text-shadow 0.3s ease;
     }
 
-    .badge {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
+        .display-4:hover {
+            text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-purple), 0 0 30px var(--accent-blue);
+        }
+
+    .trabajo-stripe {
+        margin-bottom: 5rem; /* Ajusta este valor según sea necesario */
     }
-}
 
-/* Mejoras a los textos */
-.text-bone {
-    color: var(--text-bone);
-    transition: all 0.3s ease;
-}
-
-.card:hover .text-bone {
-    color: #ffffff;
-}
+    .card-body {
+        color: var(--text-primary);
+    }
 </style>
