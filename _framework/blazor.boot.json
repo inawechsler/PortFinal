@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "PortDev",
   "resources": {
-    "hash": "sha256-rsFPAp0JYxjNWYETrFfQ2jroTk3qaqTMuJxgGQvqBy8=",
+    "hash": "sha256-ZTMScT6gc9M7bYdaAnSEOn0NgmQn0AsrxQkjG1Ge0Hs=",
     "jsModuleNative": {
       "dotnet.native.8.0.14.ao03vwswak.js": "sha256-DTUQS6Jc6BNnS7sYYezFfaUKVmQq0/lanhQuJfygH/k="
     },
@@ -31,7 +31,7 @@
       "Microsoft.Extensions.Primitives.wasm": "sha256-6187ynEahDlSLMBvD4vAmiLpZ3clRb5xu6rM7O8AxNo=",
       "Microsoft.JSInterop.wasm": "sha256-lXwhdv0Is9FMH/j0+WH3zoNWAGLbVaONtGucJ/4URQ0=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-CQVLCKiSxLN5ghyJZG3mhnMGRROdqrbNUjtAXB0nWb8=",
-      "PortDev.wasm": "sha256-MP7NgaIwBWY91XWni2o32WQvp5HcXO5uTsy/kPD0oj8=",
+      "PortDev.wasm": "sha256-S4xbAxTvFNPgSzxWxoao73v4TqOGKoKkv9sORRnfrmI=",
       "System.Collections.Concurrent.wasm": "sha256-lQjJxz4vSpnTizDGDcwWcbRH0iAQHxkhZbGwC5WsWjg=",
       "System.Collections.wasm": "sha256-oJwzP9RNU63kWK3wLV6WkEGmDd+EqDcehjHz15mWUZw=",
       "System.ComponentModel.wasm": "sha256-ROX86o93ocLpZP95tZWQdSE3L7Pr4c7PIsbxlyrGewo=",
