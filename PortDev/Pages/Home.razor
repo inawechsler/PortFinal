@@ -195,7 +195,7 @@
         @foreach (var proyecto in proyectos)
         {
             <div class="col-md-6">
-                <div class="card proyecto-card h-100" @onclick="() => MostrarDetalleProyecto(proyecto)" style="cursor: pointer;">
+                <div class="card h-100" @onclick="() => MostrarDetalleProyecto(proyecto)" style="cursor: pointer;">
                     <div class="card-body">
                         <h3 class="card-title h5 mb-3">@proyecto.Titulo</h3>
                         <div class="engine-container">
@@ -211,32 +211,6 @@
                             {
                                 <img src="https://inawechsler.github.io/PortFinal/Images/Engines/C.png" alt="SDL" class="engine-logo" />
                             }
-                        </div>
-
-                        <!-- Hover Preview - Aparece al hacer hover -->
-                        <div class="proyecto-preview">
-                            @if (proyecto.ImagenesUrl != null && proyecto.ImagenesUrl.Length > 0)
-                            {
-                                <div class="preview-image">
-                                    <img src="@proyecto.ImagenesUrl[0]" alt="Preview" class="img-fluid" />
-                                </div>
-                            }
-                            <div class="preview-content">
-                                <p class="preview-descripcion">@(idiomaActual == "es" ? proyecto.Descripcion : proyecto.DescripcionEn)</p>
-                                <div class="preview-tecnologias">
-                                    @foreach (var tecnologia in proyecto.Tecnologias.Take(3))
-                                    {
-                                        <span class="badge bg-info">@tecnologia</span>
-                                    }
-                                    @if (proyecto.Tecnologias.Length > 3)
-                                    {
-                                        <span class="badge bg-info">+@(proyecto.Tecnologias.Length - 3)</span>
-                                    }
-                                </div>
-                                <div class="preview-cta">
-                                    <span class="click-info">@Traducir("click_info")</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
